@@ -34,6 +34,19 @@ def generate_queries(question: str, max_l: int) -> list:
     queries.add(question)
     return list(queries)
 
+def filter_tokens(question: str):
+    size = len(question.split())
+    doc = nlp(question)
+
+    filtered_tokens = [token.text for token in doc if not token.is_stop and not token.is_punct]
+    max_l = len(filtered_tokens)
+    final_tokens = ""
+
+    for i in filtered_tokens:
+        final_tokens+=f"{i} "
+    final_tokens = final_tokens.strip()
+    return final_tokens, max_l
+
 if __name__ == "__main__":
     question = "what are the reasons for persistant dry cough and low blood pressure"
     print("=========================================================================")

@@ -6,7 +6,7 @@ class ChromaRetriever:
         self.collection = self.client.get_collection(collection_name)
 
     def retrieve(self, query, top_k=3):
-        results = self.collection.query(query_texts=[query], n_results=top_k)
+        results = self.collection.query(query_texts=query, n_results=top_k)
         docs = []
         ids = results["ids"][0]
         documents = results["documents"][0]

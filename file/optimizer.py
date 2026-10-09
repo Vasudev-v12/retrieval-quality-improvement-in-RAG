@@ -1,5 +1,7 @@
 """Core logic for turning a raw user prompt into concise, retrieval-optimized queries."""
 
+import re
+
 from openai import OpenAI
 
 SYSTEM_PROMPT = """You are a query planner specialized in optimizing natural-language questions for retrieval against a vector database (RAG system).
@@ -47,3 +49,15 @@ def optimize_prompt(user_prompt: str, api_key: str, model: str = "gpt-4o-mini", 
     )
 
     return response.choices[0].message.content.strip()
+
+
+def parse_queries(raw_text: str) -> list[str]:
+    """Split optimize_prompt's numbered 'q1. ...' output into a list of query strings."""
+    queries = []
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        match = re.match(r"^q\d+\.\s*(.+)$", line, re.IGNORECASE)
+        queries.append(match.group(1).strip() if match else line)
+    return queries

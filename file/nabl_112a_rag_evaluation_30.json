@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "question": "What are the main components of risk management that a medical laboratory should implement, and when should the risk-management process be reviewed?",
+    "contexts": [
+      "The components of risk management are: risk identification across pre-examination, examination, post-examination, manpower, equipment, facility and design, supplies, quality control practices and policies; risk evaluation based on severity, likelihood of occurrence and detectability; risk mitigation through preventive actions; and estimation of residual risk through monitoring. The laboratory shall review its risk management at least once a year and whenever there is a change in process or design."
+    ],
+    "answer": "A laboratory should identify risks across its testing processes and resources, evaluate them using severity, likelihood and detectability, mitigate them through preventive actions, and monitor residual risk. Risk management should be reviewed at least annually and whenever there is a change in process or design.",
+    "ground_truth": "Risk management consists of risk identification, risk evaluation using severity, likelihood and detectability, risk mitigation through preventive actions, and monitoring of residual risk. It must be reviewed at least once a year and whenever there is a change in process or design."
+  },
+  {
+    "id": 2,
+    "question": "What qualifications and employment requirements does NABL 112A specify for a Laboratory Director?",
+    "contexts": [
+      "The qualifications of the Laboratory Director shall be appropriate for the disciplines and function of the laboratory and comply with applicable regulatory requirements. The Laboratory Director shall have overall responsibility for the technical, advisory and scientific operations of the laboratory and shall be a full-time employee. In a Mini/Micro/Small laboratory, the Laboratory Director can be a part-time employee with a minimum of four hours per day."
+    ],
+    "answer": "The Laboratory Director must have qualifications appropriate to the laboratory's disciplines and functions and must meet applicable regulatory requirements. Normally the director is a full-time employee, although a Mini, Micro or Small laboratory may have a part-time director working at least four hours per day.",
+    "ground_truth": "The Laboratory Director must have qualifications appropriate to the laboratory's disciplines and functions and comply with applicable regulatory requirements. The director is normally full-time; in a Mini/Micro/Small laboratory, part-time employment is allowed with a minimum of four hours per day."
+  },
+  {
+    "id": 3,
+    "question": "How should staffing be matched to the laboratory's activities, and what minimum professional staffing is described for different laboratory sizes?",
+    "contexts": [
+      "Staffing should correspond to the range, volume and complexity of the tests provided by each discipline. Large and very large laboratories shall include, as a minimum in every discipline, an MD/DNB/DCP/PhD relevant and aligned with the scope. Medium-sized laboratories shall include at least one full-time MD/DNB/DCP/PhD in a relevant discipline, while other disciplines require appropriately qualified, trained and experienced personnel. Mini/Micro/Small laboratories shall have appropriately qualified, trained and experienced personnel in each discipline."
+    ],
+    "answer": "Staffing should reflect the range, volume and complexity of tests. Large and very large laboratories need at least an appropriately relevant MD/DNB/DCP/PhD in every discipline; medium laboratories need at least one full-time relevant MD/DNB/DCP/PhD, with appropriately qualified staff in other disciplines; Mini/Micro/Small laboratories need qualified, trained and experienced personnel in each discipline.",
+    "ground_truth": "Staffing must correspond to the range, volume and complexity of testing. Large/very large laboratories require at least an appropriately relevant MD/DNB/DCP/PhD in every discipline; medium laboratories require at least one full-time relevant MD/DNB/DCP/PhD plus appropriately qualified personnel in other disciplines; Mini/Micro/Small laboratories require appropriately qualified, trained and experienced personnel in each discipline."
+  },
+  {
+    "id": 4,
+    "question": "What must a laboratory do before assigning responsibility for specialized tests that are not routinely covered by academic training?",
+    "contexts": [
+      "For specialized tests not specifically covered under the academic curriculum, laboratories shall ensure competence by verifying and quantifying the appropriateness of the training obtained. Experience corresponding to sample load and frequency of Continuing Education and Professional Development are used for continual improvement. Competence assessments shall be conducted before assigning job responsibility and shall be documented with supporting data or records."
+    ],
+    "answer": "The laboratory must verify that the person's training is appropriate and consider relevant experience and continuing education. A documented competence assessment must be completed before the person is assigned responsibility for the specialized test.",
+    "ground_truth": "The laboratory must verify the appropriateness of the person's training and consider experience and Continuing Education and Professional Development. A competence assessment must be conducted before assigning job responsibility and must be documented with supporting records."
+  },
+  {
+    "id": 5,
+    "question": "What environmental and facility controls are required to reduce risks from chemicals and incompatible laboratory activities?",
+    "contexts": [
+      "The laboratory shall have adequate space and conditions to avoid cross contamination. Sections handling chemicals such as formalin, acid or alcohol should have exhaust systems capable of removing fumes without compromising environmental requirements, and a fume hood with exhaust is desirable. The laboratory shall have effective separation for incompatible activities, and autoclaves for sterile articles and decontamination should be placed separately with proper exhaust."
+    ],
+    "answer": "The laboratory should provide adequate space and controls against cross-contamination, use suitable exhaust systems for areas handling hazardous chemicals, and separate incompatible activities. Autoclaves used for sterile articles and decontamination should be separately placed with proper exhaust.",
+    "ground_truth": "Facilities must provide adequate space and prevent cross-contamination. Areas handling formalin, acids or alcohol should have effective exhaust systems, with a fume hood desirable, and incompatible activities must be separated; autoclaves for sterile articles and decontamination should be separately placed with proper exhaust."
+  },
+  {
+    "id": 6,
+    "question": "What power and electrical-safety measures are specified for medical laboratories?",
+    "contexts": [
+      "The laboratory shall have adequate lighting, power supply arrangements and uninterrupted power supply so that laboratory activity and stored data are not compromised. Extension boards without a fuse shall not be used, exposed cables should be minimized, electrical safety of all points in use shall be verified once in six months, and procedures shall protect refrigerated and frozen samples, reagents and consumables during power failure."
+    ],
+    "answer": "The laboratory should maintain adequate and uninterrupted power, avoid unfused extension boards and minimize exposed cables. Electrical safety should be checked every six months, and procedures should protect refrigerated or frozen materials during power failures.",
+    "ground_truth": "The laboratory must have adequate lighting and power arrangements, including uninterrupted power where needed; unfused extension boards must not be used and exposed cables should be minimized. Electrical safety must be verified every six months, with procedures to preserve refrigerated/frozen samples, reagents and consumables during power failure."
+  },
+  {
+    "id": 7,
+    "question": "What performance verification is required before and during installation or major changes to laboratory equipment?",
+    "contexts": [
+      "All equipment, including semi- and fully automated analyzers, shall have performance verified before use. At installation of new equipment, changes to existing equipment or changes in premises, Installation Qualification (IQ), Operational Qualification (OQ) and Performance Qualification (PQ) shall be performed and documented. Minimum performance verification includes accuracy, precision, linearity, carryover checks and method comparison wherever applicable."
+    ],
+    "answer": "Equipment performance must be verified before use. For new installations, changes to existing equipment or changes in premises, IQ, OQ and PQ must be performed and documented, with verification covering accuracy, precision, linearity, carryover and method comparison where applicable.",
+    "ground_truth": "Equipment must have performance verification before use. For new equipment, changes to existing equipment, or changes in premises, IQ, OQ and PQ must be performed and documented; minimum verification includes accuracy, precision, linearity, carryover checks and method comparison where applicable."
+  },
+  {
+    "id": 8,
+    "question": "How should temperature-controlled equipment such as refrigerators and deep freezers be monitored?",
+    "contexts": [
+      "Water baths, incubators, ovens, refrigerators and deep freezers shall be verified for accuracy/performance using calibrated temperature-recording devices. Daily temperature monitoring of refrigerators and deep freezers shall be performed, temperature verification of chambers/shelves recorded, and equipment requiring critical and continuous temperature control shall have 24x7 temperature recorders or data loggers. Auto-defrost shall not be used in freezers/refrigerators."
+    ],
+    "answer": "Temperature-controlled equipment must be verified for accuracy or performance with calibrated recording devices. Refrigerators and deep freezers need daily temperature monitoring and recorded chamber/shelf verification; critical equipment needs 24x7 data logging, and auto-defrost is not to be used.",
+    "ground_truth": "Temperature-controlled equipment must be verified for accuracy/performance using calibrated recording devices. Refrigerators and deep freezers require daily temperature monitoring and recorded chamber/shelf verification; equipment requiring critical continuous control must have 24x7 recorders/data loggers, and auto-defrost is not to be used."
+  },
+  {
+    "id": 9,
+    "question": "What evidence should support a calibration certificate for analytical equipment when the manufacturer's specifications are used?",
+    "contexts": [
+      "Analytical equipment shall be calibrated or verified against the manufacturer's stated performance specifications, with acceptance criteria based on manufacturer recommendations. Where specifications are not provided, the laboratory shall prepare a schedule considering workload, frequency of use, downtime and risk. The calibration certificate shall contain or be supported by raw data; a certificate that only states the apparatus has been calibrated is not sufficient."
+    ],
+    "answer": "A calibration certificate should be supported by raw data, because a statement that the equipment was merely calibrated is not sufficient. Verification should use the manufacturer's performance specifications and acceptance criteria where available.",
+    "ground_truth": "Calibration/verification should follow manufacturer performance specifications and recommendations where available. The calibration certificate must contain or be supported by raw data; a simple statement that the equipment has been calibrated is insufficient."
+  },
+  {
+    "id": 10,
+    "question": "How frequently should a digital pH meter be calibrated or verified, and what check is required before use?",
+    "contexts": [
+      "For a digital pH meter, the recommended maximum period between successive calibration by a NABL-accredited laboratory is once a year or as recommended by the manufacturer. Verification should be performed each time before use with two standard buffer solutions appropriate to the expected pH of the sample being tested."
+    ],
+    "answer": "A digital pH meter should be calibrated once a year or according to the manufacturer's recommendation, and it should be verified before each use with two appropriate standard buffer solutions.",
+    "ground_truth": "A digital pH meter should be calibrated once a year or as recommended by the manufacturer, and verified each time before use with two standard buffer solutions appropriate to the expected sample pH."
+  },
+  {
+    "id": 11,
+    "question": "What information must be included on labels for laboratory reagents and consumables?",
+    "contexts": [
+      "All reagents, consumables, stains, media, kits and antimicrobials shall be stored according to the manufacturer's recommendations. Labels shall contain information such as content and quantity, concentration or titer, date received or prepared, date of opening, storage requirements and expiry dates where applicable. In-house reagents shall also include the name and signature of the person who prepared the reagent, storage requirements, date of preparation and expiry."
+    ],
+    "answer": "Labels should identify the content and quantity, concentration or titer, receipt or preparation date, opening date, storage requirements and expiry date where applicable. In-house reagents should additionally include the preparer's name and signature and preparation date.",
+    "ground_truth": "Reagent/consumable labels should include content and quantity, concentration or titer, date received/prepared, date opened, storage requirements and expiry where applicable. In-house reagents must also include the preparer's name/signature, storage requirements, preparation date and expiry."
+  },
+  {
+    "id": 12,
+    "question": "What requirements apply when a laboratory informs users about accredited and non-accredited tests?",
+    "contexts": [
+      "The laboratory shall maintain a complete list of users, clinics, hospitals, laboratories and sample collection agencies from whom it receives samples. Users shall be explicitly informed about the non-accredited status of requested tests, which may be done through separate lists of accredited and non-accredited parameters. A copy of the accredited scope with method and TAT shall also be available for reference."
+    ],
+    "answer": "Users must be explicitly informed when requested tests are non-accredited. The laboratory may provide separate lists of accredited and non-accredited test parameters and should make its accredited scope, method and turnaround time available.",
+    "ground_truth": "Users must be explicitly informed about the non-accredited status of tests. Separate accredited/non-accredited test lists may be used, and the laboratory should make the accredited scope, method and TAT available for reference."
+  },
+  {
+    "id": 13,
+    "question": "Under what circumstances can a laboratory refer a test to another laboratory, and what additional controls are required?",
+    "contexts": [
+      "Referral may be used for second opinion in specified disciplines and supplementary testing, and confirmation may be required for biochemical, microbiological and haematological tests. The referral laboratory shall be NABL accredited for the referred tests, with risk assessment for sample transport. A test may also be referred during temporary incapacity caused by unforeseen circumstances such as equipment breakdown, disasters or strikes, as an exceptional relaxation."
+    ],
+    "answer": "Referral is permitted for specified second opinions, supplementary or confirmatory testing and, exceptionally, during temporary incapacity such as equipment breakdown or disasters. The referred testing laboratory should be NABL accredited for the relevant tests and sample transport must be risk-assessed.",
+    "ground_truth": "Referral can be used for permitted second opinions, supplementary/confirmatory testing and, exceptionally, temporary incapacity caused by unforeseen events such as equipment breakdown, disasters or strikes. The referral laboratory should be NABL accredited for the referred tests and sample transport must undergo risk assessment."
+  },
+  {
+    "id": 14,
+    "question": "What records and reporting controls are required when a test is referred to another laboratory?",
+    "contexts": [
+      "The laboratory shall maintain lists of referred tests and the names and addresses of referral laboratories. Users shall receive prior intimation about referred tests. The referring laboratory shall produce the original referral report or transcribe it without altering the clinical interpretation, identify the referral laboratory and tests performed, and record the results. A memorandum of understanding defining responsibilities must be in place and confidentiality maintained."
+    ],
+    "answer": "The laboratory must keep referral records, inform users in advance, and retain the original referral report or a faithful transcription that identifies the referral laboratory, tests and results without altering the clinical interpretation. Responsibilities should be defined in an MOU and confidentiality maintained.",
+    "ground_truth": "The laboratory must maintain referral records, give prior intimation to users, and produce the original referral report or a transcription without altering clinical interpretation, identifying the referral laboratory, tests and results. An MOU defining responsibilities must exist and confidentiality must be maintained."
+  },
+  {
+    "id": 15,
+    "question": "What is the recommended approach for transporting temperature-sensitive samples?",
+    "contexts": [
+      "The laboratory should use appropriate packaging and cooling/freezing materials and maintain the storage temperature required for the analyte during transport. Suitable insulated containers should maintain 4 to 8°C; dry ice should be used for extremely temperature-sensitive analytes. Some analytes require freezing or protection from light. Personnel involved in packaging and transport shall be trained in triple packaging using a leakproof primary container, leakproof secondary container and rigid outer packaging."
+    ],
+    "answer": "Temperature-sensitive samples should be transported using suitable packaging and cooling materials that maintain the required temperature. Insulated containers should maintain 4–8°C when applicable, dry ice should be used for extremely sensitive analytes, and specimens requiring light protection must be wrapped appropriately. Triple packaging is required and staff must be trained in it.",
+    "ground_truth": "Use packaging and cooling/freezing materials that maintain the analyte's required temperature. Maintain 4–8°C where specified and use dry ice for extremely temperature-sensitive analytes; protect light-sensitive analytes from light. Personnel must use trained triple packaging: leakproof primary container, leakproof secondary container and rigid outer packaging."
+  },
+  {
+    "id": 16,
+    "question": "What sample-collection practices are specified for venipuncture and invasive procedures?",
+    "contexts": [
+      "For venipuncture, an evacuated tube system is preferred because the blood directly contacts the additives/anticoagulants. Syringes should be avoided for safety reasons; if one is necessary, a safety device should be used for transfer to tubes. The laboratory should document collection and handling procedures, follow the order of draw for evacuated tubes, and ensure informed consent for HIV testing and invasive procedures such as FNA, lumbar puncture, body-fluid aspiration and bone-marrow aspiration."
+    ],
+    "answer": "An evacuated tube system is preferred for venipuncture, while syringes should generally be avoided; when necessary, a safety transfer device should be used. The collection process and order of draw should be documented and followed, and informed consent is required for HIV testing and specified invasive procedures.",
+    "ground_truth": "Evacuated tube systems are preferred for venipuncture and syringes should be avoided; when a syringe is necessary, a safety transfer device should be used. Collection and handling procedures should be documented, the order of draw followed, and informed consent obtained for HIV testing and listed invasive procedures."
+  },
+  {
+    "id": 17,
+    "question": "What should a laboratory do when a sample's integrity cannot be established?",
+    "contexts": [
+      "The laboratory shall not accept samples where it cannot establish sample integrity. If a compromised sample is accepted, the laboratory is responsible for reflecting the significance of the compromise in the test report. A sample-collection time log shall accompany transported samples."
+    ],
+    "answer": "A laboratory should not accept a sample if it cannot establish its integrity. If a compromised sample is accepted, the significance of that compromise must be reflected in the test report.",
+    "ground_truth": "The laboratory should not accept a sample when it cannot establish its integrity. If a compromised sample is accepted, the laboratory must reflect the significance of the compromise in the test report."
+  },
+  {
+    "id": 18,
+    "question": "When is method verification required for an examination method, and what performance characteristics should it cover?",
+    "contexts": [
+      "Method verification shall be done when the test is introduced for the first time in the laboratory. The verification includes accuracy, precision, linearity, analytical measurement range and inter-instrument checks. Patient samples are preferred to minimize matrix effects, although quality-control material, calibrators or reference material may be used. If an open-channel or third-party reagent is used on an automated system, carryover studies are also included."
+    ],
+    "answer": "Verification is required when a test is introduced for the first time in the laboratory. It should assess accuracy, precision, linearity, analytical measurement range and inter-instrument agreement, with carryover studies added for open-channel or third-party reagents.",
+    "ground_truth": "Method verification is required when a test is first introduced in the laboratory and includes accuracy, precision, linearity, analytical measurement range and inter-instrument checks. Carryover studies are added when open-channel or third-party reagents are used on an automated system."
+  },
+  {
+    "id": 19,
+    "question": "When does NABL 112A treat a modified commercial test method as a new method requiring validation?",
+    "contexts": [
+      "When a laboratory modifies a regulatory-cleared and approved commercial test method, it is essentially considered a new method and the laboratory is considered a test developer/manufacturer as well as the end-user. It must establish acceptable performance criteria and validate the performance as part of implementation. Examples include changing sample matrix, collection/transport conditions, intended use, quantitative versus qualitative analysis, incubation temperature, dilution, calibration material or a procedural step."
+    ],
+    "answer": "A modified regulatory-cleared commercial method is treated as a new method. The laboratory must establish acceptable performance criteria and validate its performance; examples include changes to sample matrix, intended use, incubation temperature, dilution, calibration material or procedure.",
+    "ground_truth": "When a laboratory modifies a regulatory-cleared and approved commercial method, NABL treats it as essentially a new method. The laboratory must establish acceptable performance criteria and validate the method during implementation; listed examples include changes to sample matrix, intended use, analysis type, incubation temperature, dilution, calibration and procedural steps."
+  },
+  {
+    "id": 20,
+    "question": "How should measurement uncertainty for quantitative tests be supported using internal controls?",
+    "contexts": [
+      "One component of measurement uncertainty is precision, obtained by running stable controls. The laboratory shall run controls for each analyte with quantitative measurements at the frequency specified for the discipline. Standard deviation and percentage coefficient of variation should be derived from the laboratory mean rather than the manufacturer's target value, and the actual percentage CV up to the first decimal place should be used."
+    ],
+    "answer": "Precision for measurement uncertainty should be estimated using stable controls run at the specified frequency for each quantitative analyte. SD and %CV should be calculated from the laboratory mean rather than the manufacturer's assigned target value.",
+    "ground_truth": "Precision, a component of measurement uncertainty, is obtained from stable controls. Controls must be run for each quantitative analyte according to discipline-specific frequency, and SD and %CV should be derived from the laboratory mean, not the manufacturer's target value; the actual %CV to one decimal place should be used."
+  },
+  {
+    "id": 21,
+    "question": "What steps are required for verifying a laboratory information system after installation?",
+    "contexts": [
+      "When there is a comprehensive computerized information system, all functions from accession to reporting shall be verified after installation. The general process includes entering patient demographics and clinical information, retrieving the same data, capturing a screen print, comparing it with paper or paperless source data, and signing and filing it with the date. This review is repeated half-yearly for a minimum of 10 different types of samples/tests."
+    ],
+    "answer": "The system should be checked from accession through reporting by entering and retrieving patient information, capturing evidence, comparing it with the source record, and signing and dating the verification. The process should be repeated every six months for at least 10 different sample or test types.",
+    "ground_truth": "After installation, all LIS functions from accession to reporting should be verified by entering and retrieving patient data, capturing a record, comparing it to source information, and signing/dating the verification. The review should be repeated half-yearly for at least 10 different sample/test types."
+  },
+  {
+    "id": 22,
+    "question": "What controls are required for interfaces between laboratory analyzers and information systems?",
+    "contexts": [
+      "Interfaces between hardware such as analyzers and LIS, or between software systems such as LIS-HIS, shall be verified to ensure that the interface transmits data as intended and that there is no misfiling of results in the database or inappropriate formatting of the report. If there is a major change in an information-system component, the effect on the entire workflow for a selected sample shall be demonstrated to have no deleterious effect."
+    ],
+    "answer": "Interfaces must be verified for correct data transmission, prevention of result misfiling and correct report formatting. After a major information-system change, the effect on the complete workflow for a selected sample must also be demonstrated.",
+    "ground_truth": "Analyzer-LIS and LIS-HIS interfaces must be verified for intended data transmission, prevention of result misfiling and correct report formatting. After a major information-system change, the entire workflow for a selected sample must be demonstrated not to have a deleterious effect."
+  },
+  {
+    "id": 23,
+    "question": "What security and confidentiality controls are required for laboratory information systems?",
+    "contexts": [
+      "The laboratory shall maintain confidentiality of patient information. Information systems shall have role-based authenticated access, procedures to inactivate users who are no longer authorized, and an audit trail that links user activity to patient data or software changes."
+    ],
+    "answer": "The information system should use role-based authenticated access, disable users who are no longer authorized and maintain an audit trail connecting user activity to patient data or software changes, while maintaining patient confidentiality.",
+    "ground_truth": "Laboratory information systems must maintain patient confidentiality, use role-based authenticated access, have procedures to inactivate unauthorized users, and provide an audit trail linking user activity to patient data or software changes."
+  },
+  {
+    "id": 24,
+    "question": "What minimum retention period is specified for histopathology reports, blocks and slides?",
+    "contexts": [
+      "The minimum retention period listed for Histopathology Reports, Block & Slides is 5 years."
+    ],
+    "answer": "The minimum retention period is five years.",
+    "ground_truth": "Histopathology reports, blocks and slides must be retained for a minimum of 5 years."
+  },
+  {
+    "id": 25,
+    "question": "What quality indicators are specifically identified for monitoring laboratory performance?",
+    "contexts": [
+      "The laboratory shall incorporate salient quality indicators for monitoring performance. These include, among other things, sample collection and identification, transportation and processing, analysis and reporting of results, turnaround time, complaints, process downtime, measurement uncertainty, and performance in PT/EQA schemes."
+    ],
+    "answer": "Quality indicators should cover sample collection and identification, transportation and processing, analysis and reporting, turnaround time, complaints, process downtime, measurement uncertainty and PT/EQA performance.",
+    "ground_truth": "The document identifies quality indicators including sample collection and identification, transportation and processing, analysis and reporting, turnaround time, complaints, process downtime, measurement uncertainty, and performance in PT/EQA schemes."
+  },
+  {
+    "id": 26,
+    "question": "How often must the laboratory perform internal audits, and what parts of the laboratory process must they cover?",
+    "contexts": [
+      "The laboratory shall ensure that pre-examination, examination and post-examination processes are all covered during internal audit, along with other processes including primary sample collection and POCT where applicable. Internal audit shall be conducted at least once in 12 months."
+    ],
+    "answer": "Internal audits must be performed at least every 12 months and must cover pre-examination, examination and post-examination processes, as well as primary sample collection and POCT where applicable.",
+    "ground_truth": "Internal audits must be conducted at least once every 12 months. They must cover pre-examination, examination and post-examination processes and, where applicable, primary sample collection and POCT."
+  },
+  {
+    "id": 27,
+    "question": "For POCT devices, how often should internal quality control be performed and what action is required for results outside acceptable limits?",
+    "contexts": [
+      "For POCT, one level of internal quality control should be performed per shift and documented after verifying acceptance. Wherever possible for quantitative parameters, QC ranges should be established and variations within ±3 SD are acceptable. Root cause analysis should be performed and documented for QC results outside acceptable limits."
+    ],
+    "answer": "At least one QC level should be performed per shift and documented. For quantitative parameters, ±3 SD is an acceptable variation where ranges are established, and any out-of-limit result requires documented root-cause analysis.",
+    "ground_truth": "For POCT, one level of IQC should be performed per shift and documented. Where applicable, quantitative QC variations within ±3 SD are acceptable, and every result outside acceptable limits requires documented root-cause analysis."
+  },
+  {
+    "id": 28,
+    "question": "What are the POCT verification requirements for new reagent lots and external quality assessment?",
+    "contexts": [
+      "For new POCT reagent lots, low-complexity devices shall be verified once with one positive and one negative QC material, while moderate- and high-complexity devices shall be verified three times for each QC level. POCT devices shall undergo at least two verification/comparisons using EQA samples per year, or split samples with another NABL-accredited laboratory in a different organization when EQA is unavailable."
+    ],
+    "answer": "Low-complexity POCT devices require one verification with positive and negative QC, while moderate/high complexity devices require three comparisons for each QC level. POCT devices also require at least two EQA or equivalent split-sample comparisons per year.",
+    "ground_truth": "For new reagent lots, low-complexity POCT devices require one verification using one positive and one negative QC; moderate/high complexity devices require three verifications for each QC level. POCT devices require at least two EQA sample verifications/comparisons per year, or split-sample comparison with another NABL-accredited laboratory if EQA is unavailable."
+  },
+  {
+    "id": 29,
+    "question": "What information must be included in a POCT result report, and how should critical results be handled?",
+    "contexts": [
+      "The POCT result output shall be released directly and documented. The report should include patient identification, reference intervals, unit of measurement, date, time, and traceability to the operator performing the test and releasing the report. The POCT program shall have a procedure to notify the concerned authority of results that fall outside critical decision limits."
+    ],
+    "answer": "A POCT report should include patient identification, reference intervals, units, date and time, and traceability to the testing and releasing operator. Critical results outside defined decision limits must be communicated to the concerned authority under a defined procedure.",
+    "ground_truth": "POCT reports must include patient identification, reference intervals, unit of measurement, date, time, and traceability to the operator performing and releasing the test. The POCT program must have a procedure for notifying the concerned authority when results fall outside critical decision limits."
+  },
+  {
+    "id": 30,
+    "question": "What histopathology fixation requirements apply to small biopsies and resected specimens, and what formalin pH is required?",
+    "contexts": [
+      "The cold ischemia time of less than one hour is recommended and specimens should be immersed in 10% Neutral Buffered Formalin (NBF). Diagnostic small biopsies should be fixed for a minimum of 6 hours in formalin and resected specimens for a minimum of 24–72 hours depending on tissue type. Formalin pH should remain close to neutral at 6.8–7.4, and formalin with pH below 6.8 should be discarded. Fixation beyond 48 hours should be avoided except for high-fat tissues, which may require 72 hours."
+    ],
+    "answer": "Small biopsies should be fixed for at least six hours, while resected specimens need 24–72 hours depending on tissue type. Formalin pH should be 6.8–7.4, and formalin below pH 6.8 should be discarded. Fixation beyond 48 hours should generally be avoided except for high-fat tissue, which may need up to 72 hours.",
+    "ground_truth": "Cold ischemia should be less than one hour and 10% NBF is recommended. Small biopsies require at least 6 hours of fixation and resected specimens 24–72 hours depending on tissue; formalin pH should be 6.8–7.4 and pH below 6.8 should be discarded. Fixation beyond 48 hours should be avoided except for high-fat tissues, which may require 72 hours."
+  }
+]

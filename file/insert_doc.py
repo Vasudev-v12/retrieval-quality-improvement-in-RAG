@@ -48,35 +48,125 @@ Although successful on the road, the Testarossa did not participate in any racin
 As Ferrari's flagship model during the 1980s, the car made numerous appearances in pop culture, most notably in the arcade game Out Run, and in the third, fourth, and fifth seasons of Miami Vice. The car has subsequently become synonymous with 1980s "yuppies" and is an icon of 1980s retro culture.[23] Its signature side strakes have become a popular aftermarket body component for wide arch aesthetic body kits.[2] The side strakes also spawned body kits that were designed for cars such as the Pontiac Fiero and the Mazda B-Series pickup trucks (these were referred to as "Truxtarossa" kits), in addition to a wide variety of Japanese and American sports cars and motorcycles such as the Honda VFR.
 """
 
+# import chromadb
+# from chromadb.utils import embedding_functions
+
+# def chunk_text(text, chunk_size=500, overlap=50):
+#     chunks = []
+#     start = 0
+#     while start < len(text):
+#         end = start + chunk_size
+#         chunks.append(text[start:end])
+#         if end >= len(text):
+#             break
+#         start += chunk_size - overlap
+#     return chunks
+
+# client = chromadb.PersistentClient(path="./chroma_db")
+# collection = client.get_or_create_collection(
+#     name="documents"
+# )
+
+# chunks1 = chunk_text(text1)
+# chunks2 = chunk_text(text2)
+
+# collection.add(
+#     ids=(
+#         [f"chunk_doc1_{i}" for i in range(len(chunks1))]
+#         + [f"chunk_doc2_{i}" for i in range(len(chunks2))]
+#     ),
+#     documents=chunks1 + chunks2,
+#     metadatas=(
+#         [{"source": "document1", "chunk": i} for i in range(len(chunks1))]
+#         + [{"source": "document2", "chunk": i} for i in range(len(chunks2))]
+#     ),
+# )
+# print(f"Stored {len(chunks1)} chunks from document1 and {len(chunks2)} chunks from document2.")
+
+
+import os
+import uuid
 import chromadb
-from chromadb.utils import embedding_functions
+import record_gen
+from pypdf import PdfReader
 
-def chunk_text(text, chunk_size=500, overlap=50):
-    chunks = []
-    start = 0
-    while start < len(text):
-        end = start + chunk_size
-        chunks.append(text[start:end])
-        if end >= len(text):
-            break
-        start += chunk_size - overlap
-    return chunks
+class ChromaInserter:
+    def __init__(self, db_path="./chroma_db", collection_name="documents"):
+        # Connect to the persistent database path
+        self.client = chromadb.PersistentClient(path=db_path)
+        # Get or create the collection (uses default embeddings automatically)
+        self.collection = self.client.get_or_create_collection(name=collection_name)
 
-client = chromadb.PersistentClient(path="./chroma_db")
-collection = client.get_or_create_collection(
-    name="documents"
-)
+    def _chunk_text(self, text, chunk_size=1000, overlap=200):
+        """Splits a document text into smaller overlapping segments."""
+        chunks = []
+        start = 0
+        while start < len(text):
+            end = start + chunk_size
+            chunks.append(text[start:end])
+            start += (chunk_size - overlap)
+        return chunks
 
-chunks = chunk_text(text2)
+    def _process_and_insert(self, full_text, document_id, source_name, chunk_size, overlap):
+        """Internal helper to chunk text, generate metadata, and upsert to ChromaDB."""
+        # Chunk the text
+        text_chunks = self._chunk_text(full_text, chunk_size, overlap)
 
-collection.add(
-    ids=[f"chunk_{i}" for i in range(len(chunks))],
-    documents=chunks,
-    metadatas=[
-        {
-            "source": "document2",
-            "chunk": i
-        } for i in range(len(chunks))
-    ]
-)
-print(f"Stored {len(chunks)} chunks.")
+        # Combine the document UUID and chunk number for a unique primary key
+        ids = [f"{document_id}_chunk_{i}" for i in range(len(text_chunks))]
+        metadatas = [
+            {
+                "document_id": document_id, 
+                "source_name": source_name,
+                "chunk_index": i
+            } 
+            for i in range(len(text_chunks))
+        ]
+
+        # Insert/Upsert into your ChromaDB collection
+        self.collection.upsert(
+            ids=ids,
+            metadatas=metadatas,
+            documents=text_chunks
+        )
+        print(f"Successfully processed '{source_name}' -> Assigned UUID: {document_id} ({len(text_chunks)} chunks).")
+        return document_id
+
+    def insert_pdf(self, file_path, document_id=None, chunk_size=1000, overlap=200):
+        """Parses a single PDF, chunks its text, and inserts it using a unique UUID."""
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"The file path '{file_path}' does not exist.")
+
+        if not document_id:
+            document_id = str(uuid.uuid4())
+
+        # Extract text from the PDF
+        reader = PdfReader(file_path)
+        full_text = ""
+        for page in reader.pages:
+            text = page.extract_text()
+            if text:
+                full_text += text + "\n"
+
+        file_name = os.path.basename(file_path)
+        return self._process_and_insert(full_text, document_id, file_name, chunk_size, overlap)
+
+    def insert_string(self, text_data, source_name="raw_string_input", document_id=None, chunk_size=400, overlap=100):
+        """Accepts a raw string variable, chunks it, and inserts it using a unique UUID."""
+        if not text_data or not text_data.strip():
+            raise ValueError("The text_data string cannot be empty.")
+
+        if not document_id:
+            document_id = str(uuid.uuid4())
+
+        return self._process_and_insert(text_data, document_id, source_name, chunk_size, overlap)
+
+if __name__=="__main__":
+    #emp_data = record_gen.make_record()
+    inserter = ChromaInserter()
+    # for record in emp_data:
+    #     inserter.insert_string(record)
+    inserter.insert_string(text1)
+    # inserter.insert_pdf("D:\\VASUDEV SHREEKUMAR\\Desktop\\rag2\\202412180304-NABL-112-A-doc.pdf")
+    print("Successfully inserted data into chromadb")
+
