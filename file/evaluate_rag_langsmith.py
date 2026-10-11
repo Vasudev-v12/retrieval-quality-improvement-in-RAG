@@ -24,8 +24,7 @@ load_dotenv()
 
 DATASET_NAME = "nabl-112a-rag-evaluation-30"
 DATASET_FILE = Path(__file__).with_name("nabl_112a_rag_evaluation_30.json")
-JUDGE_MODEL = "gemini-3" \
-".6-flash"
+JUDGE_MODEL = "gemini-3.6-flash"
 
 CONTEXT_PRECISION_CRITERIA = """
 Score Context Precision from 0 to 10. The prediction is the retrieved context.
@@ -65,6 +64,7 @@ def require_environment() -> None:
     #     raise EnvironmentError(f"Missing environment variable(s): {', '.join(missing)}")
     os.environ["LANGSMITH_API_KEY"]
     os.environ["GOOGLE_API_KEY"]
+    os.environ["OPENAI_API_KEY"]
     os.environ.setdefault("LANGCHAIN_TRACING_V2", "true")
     os.environ.setdefault("LANGCHAIN_PROJECT", "nabl-rag-evaluation")
 

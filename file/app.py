@@ -240,7 +240,7 @@ def run_pipeline(question, top_k, threshold, force_regenerate):
     result["source"] = "generated"
 
     f_t, max_l = query_gen.filter_tokens(question)
-    queries = query_gen.generate_queries(question=question,max_l=max_l)
+    queries = query_gen.generate_queries(question=f_t,max_l=max_l)
     # result["raw_queries"] = raw_queries
     result["queries"] = queries
 
@@ -346,12 +346,10 @@ if missing_keys:
 if "question_input" not in st.session_state:
     st.session_state["question_input"] = list(SAMPLE_QUESTIONS.values())[0]
 
-
 def _apply_sample():
     choice = st.session_state["sample_choice"]
     if choice != "Custom question":
         st.session_state["question_input"] = SAMPLE_QUESTIONS[choice]
-
 
 st.selectbox(
     "Sample question",

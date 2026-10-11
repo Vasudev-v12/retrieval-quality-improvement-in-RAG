@@ -2,10 +2,10 @@ python-dotenv
 chromadb
 langchain-core
 langchain-google-genai
+langchain-openai
 openai
 streamlit
 pandas
-
 pypdf
 streamlit
 # Optional: only needed by the legacy KeyBERT-based query_gen.py utility,

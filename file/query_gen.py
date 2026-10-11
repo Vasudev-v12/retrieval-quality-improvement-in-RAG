@@ -1,3 +1,11 @@
+# all-MiniLM-L6-V2
+'''all-MiniLM-L6-v2 is a lightweight, open-source sentence-transformer model that converts 
+text (sentences, phrases, or short paragraphs) into a 384-dimensional dense vector space.'''
+
+
+# en_core_web_sm
+'''en_core_web_sm is a small, default English language pipeline for the spaCy Natural Language Processing (NLP) library in Python'''
+
 import math
 import chromadb
 print("loading spacy ...")
