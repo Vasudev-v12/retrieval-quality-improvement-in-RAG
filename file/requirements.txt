@@ -8,6 +8,7 @@ streamlit
 pandas
 pypdf
 streamlit
+rank-bm25
 # Optional: only needed by the legacy KeyBERT-based query_gen.py utility,
 # which is not used by the current main.py pipeline (optimizer.py is used
 # instead). Uncomment if you want to run query_gen.py or its __main__ demo.

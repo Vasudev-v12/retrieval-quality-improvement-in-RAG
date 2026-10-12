@@ -14,8 +14,8 @@ import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 import query_gen
-from optimizer import optimize_prompt, parse_queries
-from retriever import ChromaRetriever
+# from optimizer import optimize_prompt, parse_queries
+from hybridRag import ChromaHybridRag
 from llm import GeminiRAG
 from memory_reservoir import MemoryKnowledgeReservoir
 
@@ -203,7 +203,7 @@ SAMPLE_QUESTIONS = {
 # --------------------------------------------------------------------------
 @st.cache_resource(show_spinner=False)
 def get_retriever():
-    return ChromaRetriever(db_path="./chroma_db", collection_name="documents")
+    return ChromaHybridRag(db_path="./chroma_db", collection_name="documents")
 
 
 @st.cache_resource(show_spinner=False)

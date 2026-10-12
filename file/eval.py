@@ -18,7 +18,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 import query_gen
 from llm import OpenaiRAG
-from retriever import ChromaRetriever
+from hybridRag import ChromaHybridRag
 
 load_dotenv()
 openai_api_key = os.environ["OPENAI_API_KEY"]
@@ -177,11 +177,11 @@ def upload_dataset(client: Client, rows: list[dict[str, Any]],) -> None:
     print(f"Uploaded {len(examples)} examples.")
 
 # Returns preset RAG retriever and llm model objects
-def get_pipeline() -> tuple[ChromaRetriever, OpenaiRAG]:
+def get_pipeline() -> tuple[ChromaHybridRag, OpenaiRAG]:
     global RETRIEVER, RAG
 
     if RETRIEVER is None:
-        RETRIEVER = ChromaRetriever(
+        RETRIEVER = ChromaHybridRag(
             db_path="./chroma_db",
             collection_name="documents",
         )
