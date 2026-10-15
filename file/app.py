@@ -13,11 +13,12 @@ import time
 import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
-import query_gen
+import rag_optimizer.query_gen as query_gen
 # from optimizer import optimize_prompt, parse_queries
-from hybridRag import ChromaHybridRag
-from llm import GeminiRAG
-from memory_reservoir import MemoryKnowledgeReservoir
+from rag_optimizer.hybridRag import ChromaHybridRag, compute_corpus_version
+from rag_optimizer.context_expansion import EXPANSION_MODES, ContextExpander
+from rag_optimizer.llm import GeminiRAG, OpenaiRAG
+from rag_optimizer.memory_reservoir import build_reservoir
 
 
 load_dotenv()
@@ -125,19 +126,19 @@ st.markdown(
 # --------------------------------------------------------------------------
 COMPONENTS = {
     "optimizer": {
-        "label": "Query Optimizer",
-        "file": "optimizer.py",
+        "label": "Query Generator",
+        "file": "query_gen.py",
         "desc": (
-            "An LLM call (OpenAI) turns the raw question into several diverse "
-            "retrieval queries, covering different semantic angles instead of "
-            "one literal rewording: **fact-decomposition** (split multi-fact "
-            "questions), **broader-context** (step back to the general topic), "
-            "**hypothetical-answer** (HyDE-style — a fake passage that sounds "
-            "like the answer), **terminology-expansion** (spell out jargon / "
-            "acronyms), and an **entity-only fallback** (just the core "
-            "subject). This exists because a single query has an information "
-            "'plateau' in vector search — different angles surface different "
-            "chunks."
+            "`build_queries()` takes the raw question, filters it to content "
+            "tokens — keeping negations (`not`, `never`) and measurements "
+            "(`1.8 mmol/L`), which invert or carry the answer — and then asks "
+            "KeyBERT for key phrases plus an **entity-only fallback** (the "
+            "longest entity or noun chunk, for when the question is too "
+            "specific). A single query has an information 'plateau' in vector "
+            "search, so several angles surface different chunks. Every query "
+            "is labeled with the intent that produced it and returned in a "
+            "deterministic order. Expansion is skipped for very short "
+            "questions."
         ),
     },
     "retriever": {
@@ -151,6 +152,20 @@ COMPONENTS = {
             "relevant to the question."
         ),
     },
+    "expansion": {
+        "label": "Context Expansion",
+        "file": "context_expansion.py",
+        "desc": (
+            "A second retrieval pass built from the first-pass results instead "
+            "of a new query string. **Centroid search** averages the dense "
+            "embeddings of the top chunks into one context vector and searches "
+            "with it, pulling in chunks on the same broader topic even when they "
+            "share no words with the question. **Neighbor window** reads each "
+            "top chunk's `document_id` / `chunk_index` metadata and fetches the "
+            "chunks right before and after it, restoring text cut at a chunk "
+            "boundary."
+        ),
+    },
     "memory": {
         "label": "Memory Reservoir",
         "file": "memory_reservoir.py",
@@ -158,9 +173,14 @@ COMPONENTS = {
             "A separate ChromaDB collection (`memory`, distinct from "
             "`documents`) that semantically caches past question/answer "
             "pairs. Before doing any retrieval or generation, the new "
-            "question is compared against cached entries; if the closest "
-            "one is within the distance threshold, its content is reused "
-            "directly — skipping the OpenAI and Gemini calls entirely."
+            "question is compared against cached entries. A hit must pass "
+            "four guards: within the distance threshold, clearly ahead of "
+            "the runner-up (margin), enough word overlap with the cached "
+            "question, and not stale (expired, or generated from a different "
+            "version of the `documents` collection). Entries expire by "
+            "policy (stable / time-sensitive / default; 'dynamic' questions "
+            "such as 'today' are never cached) and the cache is capped, "
+            "evicting expired entries first and then the least recently used."
         ),
     },
     "llm": {
@@ -208,22 +228,29 @@ def get_retriever():
 
 @st.cache_resource(show_spinner=False)
 def get_rag(api_key):
-    return GeminiRAG(api_key)
+    return OpenaiRAG(api_key)#GeminiRAG(api_key)
 
 
 @st.cache_resource(show_spinner=False)
 def get_memory():
-    return MemoryKnowledgeReservoir(db_path="./chroma_db")
+    # Expiration and capacity policy come from the MEMORY_* environment
+    # variables (see memory_reservoir.py).
+    return build_reservoir(db_path="./chroma_db")
 
 
-def run_pipeline(question, top_k, threshold, force_regenerate):
+def run_pipeline(question, top_k, threshold, force_regenerate, expansion_mode="both",
+                 centroid_k=3, window=1):
     """Execute the real pipeline and collect what each stage produced."""
     result = {"question": question}
 
     memory = get_memory()
     memory.distance_threshold = threshold
 
-    cached = memory.retrieve(question, top_k=3)
+    retriever = get_retriever()
+    # Cached answers are only valid against the corpus they were generated from.
+    corpus_version = compute_corpus_version(retriever.collection)
+
+    cached = memory.retrieve(question, top_k=3, corpus_version=corpus_version)
     best = cached[0] if cached else None
     cache_hit = bool(best and best["is_relevant"])
     result["cache_candidates"] = cached
@@ -239,25 +266,36 @@ def run_pipeline(question, top_k, threshold, force_regenerate):
 
     result["source"] = "generated"
 
-    f_t, max_l = query_gen.filter_tokens(question)
-    queries = query_gen.generate_queries(question=f_t,max_l=max_l)
-    # result["raw_queries"] = raw_queries
+    query_plan = query_gen.build_queries(question)
+    queries = [entry["query"] for entry in query_plan["queries"]]
+    result["query_plan"] = query_plan
     result["queries"] = queries
-
-    retriever = get_retriever()
 
     per_query_results = {q: retriever.retrieve(q, top_k=top_k) for q in queries}
     result["per_query_results"] = per_query_results
 
-    documents = retriever.retrieve_multiple(queries, top_k=top_k)
+    first_pass = retriever.retrieve_multiple(queries, top_k=top_k)
+    expander = ContextExpander(retriever, centroid_k=centroid_k, window=window)
+    documents = expander.expand(first_pass, mode=expansion_mode)
+    result["first_pass_count"] = len(first_pass)
+    result["expansion_mode"] = expansion_mode
     result["documents"] = documents
 
-    rag = get_rag(GOOGLE_API_KEY)
+    rag = get_rag(OPENAI_API_KEY)
     answer = rag.answer(question, documents)
     result["answer"] = answer
     result["prompt_template"] = rag.prompt.template
 
-    memory.add(title=question, content=answer, source="generated", query=question)
+    # `add` returns None when the question is classified as dynamic
+    # information, which is deliberately not cached.
+    memory_id = memory.add(
+        title=question,
+        content=answer,
+        source="generated",
+        query=question,
+        corpus_version=corpus_version,
+    )
+    result["cached"] = memory_id is not None
     result["stats_after"] = memory.statistics()
     return result
 
@@ -267,7 +305,7 @@ def run_pipeline(question, top_k, threshold, force_regenerate):
 # --------------------------------------------------------------------------
 with st.sidebar:
     st.markdown("### Pipeline components")
-    for key in ["memory", "optimizer", "retriever", "llm"]:
+    for key in ["memory", "optimizer", "retriever", "expansion", "llm"]:
         c = COMPONENTS[key]
         with st.expander(f"{c['label']}  ·  {c['file']}"):
             st.write(c["desc"])
@@ -280,6 +318,15 @@ with st.sidebar:
         help="Lower = stricter cache matching. Passed straight to "
              "MemoryKnowledgeReservoir.distance_threshold.",
     )
+    expansion_mode = st.selectbox(
+        "Context expansion (second pass)", EXPANSION_MODES, index=EXPANSION_MODES.index("both"),
+        help="centroid = search with the averaged embedding of the top chunks; "
+             "neighbor = add the chunks adjacent to the top chunks in their document.",
+    )
+    centroid_k = st.slider("Centroid search: chunks added", 0, 10, 3,
+                           disabled=expansion_mode not in ("centroid", "both"))
+    window = st.slider("Neighbor window (chunks each side)", 0, 3, 1,
+                       disabled=expansion_mode not in ("neighbor", "both"))
     force_regenerate = st.checkbox(
         "Force regenerate (bypass cache)",
         help="Runs the full optimizer → retrieval → Gemini path even if a "
@@ -292,12 +339,26 @@ with st.sidebar:
     st.write(f"{'✓' if OPENAI_API_KEY else '✗'} OPENAI_API_KEY")
 
     st.markdown("---")
+    st.markdown("### Expiration & capacity policy")
+    st.caption(
+        "Read from the environment (MEMORY_* variables) at startup, so these "
+        "can be changed without touching code."
+    )
+    st.json(get_memory().policy_summary(), expanded=False)
+
+    st.markdown("---")
     st.markdown("### Memory cache stats")
     stats = get_memory().statistics()
     s1, s2 = st.columns(2)
     s1.metric("Hits", stats["memory_hits"])
     s2.metric("Misses", stats["memory_misses"])
     st.metric("Hit rate", f"{stats['hit_rate']:.0%}")
+    s3, s4 = st.columns(2)
+    s3.metric("Entries", stats["entries"])
+    s4.metric("Expired purged", stats["expired_purged"])
+    s5, s6 = st.columns(2)
+    s5.metric("LRU evicted", stats["evicted"])
+    s6.metric("Not cached (dynamic)", stats["not_cached_dynamic"])
 
     if st.button("🗑 Clear memory cache"):
         mem = get_memory()
@@ -307,6 +368,9 @@ with st.sidebar:
         mem.total_memory_queries = 0
         mem.memory_hits = 0
         mem.memory_misses = 0
+        mem.expired_purged = 0
+        mem.evicted = 0
+        mem.not_cached_dynamic = 0
         st.success(f"Cleared {len(existing_ids)} cached entrie(s).")
         st.rerun()
 
@@ -325,8 +389,9 @@ st.markdown(
 st.markdown(
     """
     <div class="step-card flow-map">
-    1 · QUESTION &nbsp;→&nbsp; 2 · MEMORY CHECK &nbsp;→&nbsp; 3 · QUERY OPTIMIZER
-    &nbsp;→&nbsp; 4 · RETRIEVAL &nbsp;→&nbsp; 5 · GEMINI ANSWER &nbsp;→&nbsp; 6 · CACHE UPDATE
+    1 · QUESTION &nbsp;→&nbsp; 2 · MEMORY CHECK &nbsp;→&nbsp; 3 · QUERY GENERATION
+    &nbsp;→&nbsp; 4 · RETRIEVAL &nbsp;→&nbsp; 5 · CONTEXT EXPANSION &nbsp;→&nbsp; 6 · ANSWER
+    &nbsp;→&nbsp; 7 · CACHE UPDATE
     </div>
     """,
     unsafe_allow_html=True,
@@ -368,7 +433,9 @@ if run_clicked:
     else:
         try:
             with st.spinner("Running pipeline..."):
-                st.session_state["result"] = run_pipeline(question, top_k, threshold, force_regenerate)
+                st.session_state["result"] = run_pipeline(
+                    question, top_k, threshold, force_regenerate, expansion_mode, centroid_k, window
+                )
         except Exception as e:
             st.session_state["result"] = None
             st.error(f"Pipeline failed: {e}")
@@ -397,7 +464,11 @@ if result:
                 {
                     "Title (cached question)": m["title"],
                     "Distance": round(m["distance"], 4) if m["distance"] is not None else None,
-                    "Within threshold": m["is_relevant"],
+                    "Title overlap": round(m["title_overlap"], 2),
+                    "Policy": m.get("policy", ""),
+                    "Expires at (UTC)": m.get("expires_at") or "never",
+                    "Expired": m.get("is_expired", False),
+                    "Accepted": m["is_relevant"],
                 }
                 for m in candidates
             ]
@@ -411,36 +482,52 @@ if result:
         st.caption("A relevant cached answer was found, but 'Force regenerate' is enabled, so the full pipeline ran anyway.")
     elif result["cache_hit"]:
         st.markdown('<span class="badge badge-hit">CACHE HIT</span>', unsafe_allow_html=True)
-        st.caption(f"Closest cached entry is within the distance threshold ({threshold}) — reused directly, no API calls made.")
+        st.caption(f"Closest cached entry passed every guard (distance ≤ {threshold}, margin, title overlap, "
+                   f"not stale) — reused directly, no API calls made.")
     else:
         st.markdown('<span class="badge badge-miss">CACHE MISS</span>', unsafe_allow_html=True)
-        st.caption("No cached entry was close enough — continuing to full retrieval + generation.")
+        st.caption("No cached entry passed every guard (distance, margin, title overlap, not expired, same "
+                   "corpus version) — continuing to full retrieval + generation.")
     st.markdown("</div>", unsafe_allow_html=True)
 
     if result["source"] == "memory":
         c = COMPONENTS["llm"]
         st.markdown(
             f'<div class="step-card"><div class="step-title">Final Answer (served from memory)</div>'
-            f'<div class="step-desc">No optimizer or Gemini call was made this run.</div>'
+            f'<div class="step-desc">No query generation or LLM call was made this run.</div>'
             f'<p>{result["answer"]}</p></div>',
             unsafe_allow_html=True,
         )
     else:
-        # Step 2 — Query optimizer
+        # Step 2 — Query generation
         c = COMPONENTS["optimizer"]
+        plan = result["query_plan"]
         st.markdown(
-            f'<div class="step-card"><div class="step-title">Step 2 · Query Optimizer</div>'
-            f'<div class="step-desc">{c["file"]} — one OpenAI call, ordered by intent: fact-decomposition → '
-            f'broader-context → hypothetical-answer (HyDE) → terminology-expansion → entity-only fallback '
-            f'(some intents are skipped by the LLM if not applicable).</div>',
+            f'<div class="step-card"><div class="step-title">Step 2 · Query Generation</div>'
+            f'<div class="step-desc">{c["file"]} — the raw question is filtered to content tokens '
+            f'(negations and measurements preserved), then expanded into labeled queries in a '
+            f'deterministic order: original → key phrases (by score) → entity fallback.</div>',
             unsafe_allow_html=True,
         )
-        with st.expander("Raw LLM output"):
-            st.code(result["queries"], language="text")
-        st.markdown("Parsed queries:")
-        st.markdown(
-            "".join(f'<span class="pill">Q{i}: {q}</span>' for i, q in enumerate(result["queries"], start=1)),
-            unsafe_allow_html=True,
+        st.markdown(f"**Filtered question:** `{plan['filtered']}`")
+        st.caption(
+            f"{plan['token_count']} content token(s); "
+            f"{'expanded' if plan['expanded'] else 'too short to expand — original question only'}"
+        )
+        st.dataframe(
+            pd.DataFrame(
+                [
+                    {
+                        "#": index,
+                        "Intent": entry["intent"],
+                        "Score": round(entry["score"], 4) if entry["score"] is not None else None,
+                        "Query": entry["query"],
+                    }
+                    for index, entry in enumerate(plan["queries"], start=1)
+                ]
+            ),
+            hide_index=True,
+            width="stretch",
         )
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -459,7 +546,7 @@ if result:
                     st.markdown(f"**{d['id']}** · distance {dist}")
                     st.caption(d["content"][:220] + ("…" if len(d["content"]) > 220 else ""))
 
-        st.markdown(f"**Merged result: {len(result['documents'])} unique document(s)**")
+        st.markdown(f"**Merged result: {result['first_pass_count']} unique document(s)**")
         merged_df = pd.DataFrame(
             [
                 {
@@ -468,17 +555,57 @@ if result:
                     "Distance": round(d["distance"], 4) if d["distance"] is not None else None,
                     "Content preview": d["content"][:120] + ("…" if len(d["content"]) > 120 else ""),
                 }
-                for d in sorted(result["documents"], key=lambda d: -len(d["retrieved_by"]))
+                for d in result["documents"] if d["expansion"] == "seed"
             ]
         )
         st.dataframe(merged_df, hide_index=True, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # Step 4 — Gemini answer
+        # Step 4 — Context expansion
+        c = COMPONENTS["expansion"]
+        added = [d for d in result["documents"] if d["expansion"] != "seed"]
+        st.markdown(
+            f'<div class="step-card"><div class="step-title">Step 4 · Context Expansion '
+            f'({result["expansion_mode"]})</div>'
+            f'<div class="step-desc">{c["file"]} — second pass over the first-pass chunks: centroid '
+            f'search on their averaged embedding, and/or the neighboring chunks from the same document '
+            f'(found via document_id / chunk_index metadata).</div>',
+            unsafe_allow_html=True,
+        )
+        n_centroid = sum(d["expansion"] == "centroid" for d in added)
+        n_neighbor = sum(d["expansion"] == "neighbor" for d in added)
+        st.markdown(
+            f'<span class="pill">First pass: {result["first_pass_count"]}</span>'
+            f'<span class="pill">+ Centroid: {n_centroid}</span>'
+            f'<span class="pill">+ Neighbors: {n_neighbor}</span>'
+            f'<span class="pill">Final context: {len(result["documents"])}</span>',
+            unsafe_allow_html=True,
+        )
+        if added:
+            st.dataframe(
+                pd.DataFrame(
+                    [
+                        {
+                            "Doc ID": d["id"],
+                            "Added by": d["expansion"],
+                            "Distance": round(d["distance"], 4) if d["distance"] is not None else None,
+                            "Content preview": d["content"][:120] + ("…" if len(d["content"]) > 120 else ""),
+                        }
+                        for d in added
+                    ]
+                ),
+                hide_index=True,
+                width="stretch",
+            )
+        else:
+            st.caption("No chunks added — expansion disabled or nothing new found.")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        # Step 5 — Gemini answer
         c = COMPONENTS["llm"]
         context_chars = sum(len(d["content"]) for d in result["documents"])
         st.markdown(
-            f'<div class="step-card"><div class="step-title">Step 4 · Answer Generation (Gemini)</div>'
+            f'<div class="step-card"><div class="step-title">Step 5 · Answer Generation (Gemini)</div>'
             f'<div class="step-desc">{c["file"]} — all {len(result["documents"])} retrieved chunks '
             f'({context_chars:,} characters of context) are concatenated and Gemini is instructed to '
             f"answer using ONLY that context.</div>",
@@ -489,15 +616,26 @@ if result:
         st.markdown(f"**Answer:**\n\n{result['answer']}")
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # Step 5 — Memory update
+        # Step 6 — Memory update
         c = COMPONENTS["memory"]
-        st.markdown(
-            f'<div class="step-card"><div class="step-title">Step 5 · Memory Cache Update</div>'
-            f'<div class="step-desc">{c["file"]} — the question/answer pair was upserted into the `memory` '
-            f"collection under a hash of the question, so an equivalent future question can hit the cache "
-            f"instead of repeating steps 2–4.</div>",
-            unsafe_allow_html=True,
-        )
+        if result.get("cached"):
+            st.markdown(
+                f'<div class="step-card"><div class="step-title">Step 6 · Memory Cache Update</div>'
+                f'<div class="step-desc">{c["file"]} — the question/answer pair was upserted into the `memory` '
+                f"collection under a hash of the question, tagged with the current corpus version and an "
+                f"expiration time from the active policy, so an equivalent future question can hit the cache "
+                f"instead of repeating steps 2–5 until that entry expires.</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown(
+                f'<div class="step-card" style="border-color:#f59e0b;">'
+                f'<div class="step-title">Step 6 · Not Cached</div>'
+                f'<div class="step-desc">{c["file"]} — this question was classified as dynamic '
+                f"information, so the answer was deliberately not written to the cache: replaying it "
+                f"later would mislead more than a fresh retrieval costs.</div>",
+                unsafe_allow_html=True,
+            )
         st.markdown("</div>", unsafe_allow_html=True)
 
     stats = result["stats_after"]
@@ -506,12 +644,102 @@ if result:
         f'<span class="pill">Total queries: {stats["total_memory_queries"]}</span>'
         f'<span class="pill">Hits: {stats["memory_hits"]}</span>'
         f'<span class="pill">Misses: {stats["memory_misses"]}</span>'
-        f'<span class="pill">Hit rate: {stats["hit_rate"]:.0%}</span></div>',
+        f'<span class="pill">Hit rate: {stats["hit_rate"]:.0%}</span>'
+        f'<span class="pill">Entries: {stats["entries"]}</span>'
+        f'<span class="pill">Expired purged: {stats["expired_purged"]}</span>'
+        f'<span class="pill">LRU evicted: {stats["evicted"]}</span></div>',
         unsafe_allow_html=True,
     )
 
 st.markdown("---")
+
+# --------------------------------------------------------------------------
+# Memory cache browser — every entry currently stored in the `memory`
+# collection, with the policy and expiration metadata that governs it.
+# --------------------------------------------------------------------------
+st.markdown("## Memory cache contents")
+st.markdown(
+    '<p style="color:#888;">Everything currently stored in the `memory` collection — '
+    "the answers a future question can be served from, with the expiration policy "
+    "attached to each one. Expired entries are shown until the next retrieval purges "
+    "them.</p>",
+    unsafe_allow_html=True,
+)
+
+browser_cols = st.columns([1, 1, 3])
+with browser_cols[0]:
+    if st.button("↻ Refresh"):
+        st.rerun()
+with browser_cols[1]:
+    hide_expired = st.checkbox("Hide expired", value=False)
+
+cache_entries = get_memory().list_entries(include_expired=not hide_expired)
+
+if not cache_entries:
+    st.markdown(
+        '<div class="step-card">Cache is empty — run a question above, or the entries '
+        "were purged on expiry. Entries appear here once an answer is generated and "
+        "the policy allows caching it.</div>",
+        unsafe_allow_html=True,
+    )
+else:
+    def _countdown(entry):
+        if entry["expires_at"] is None:
+            return "never expires"
+        remaining = entry["seconds_until_expiry"]
+        if remaining is None:
+            return "unknown"
+        if remaining <= 0:
+            return "expired"
+        if remaining < 60:
+            return f"{remaining:.0f}s"
+        if remaining < 3600:
+            return f"{remaining / 60:.0f}m"
+        if remaining < 86400:
+            return f"{remaining / 3600:.1f}h"
+        return f"{remaining / 86400:.1f}d"
+
+    cache_df = pd.DataFrame(
+        [
+            {
+                "Cached question (title)": entry["title"],
+                "Policy": entry["policy"],
+                "Expires in": _countdown(entry),
+                "Expired": entry["is_expired"],
+                "Created (UTC)": (entry["created_at"] or "")[:19],
+                "Last read (UTC)": (entry["last_accessed"] or "")[:19],
+                "Answer preview": entry["content"][:90]
+                + ("…" if len(entry["content"]) > 90 else ""),
+            }
+            for entry in cache_entries
+        ]
+    )
+    st.dataframe(cache_df, hide_index=True, width="stretch")
+
+    st.markdown("**Full entries**")
+    for entry in cache_entries:
+        label = f"{'⚠ EXPIRED · ' if entry['is_expired'] else ''}{entry['title'][:90]}"
+        with st.expander(label):
+            st.markdown("**Cached answer**")
+            st.write(entry["content"])
+            st.markdown("**Entry metadata**")
+            st.json(
+                {
+                    "id": entry["id"],
+                    "policy": entry["policy"],
+                    "ttl_seconds": entry["ttl_seconds"],
+                    "created_at": entry["created_at"],
+                    "expires_at": entry["expires_at"],
+                    "last_accessed": entry["last_accessed"],
+                    "is_expired": entry["is_expired"],
+                    "source": entry["source"],
+                    "corpus_version": entry["corpus_version"],
+                },
+                expanded=False,
+            )
+
+st.markdown("---")
 st.caption(
-    "This UI calls optimizer.py, retriever.py, memory_reservoir.py, and llm.py directly — "
-    "no pipeline logic is reimplemented here."
+    "This UI calls query_gen.py, hybridRag.py, context_expansion.py, memory_reservoir.py, and llm.py "
+    "directly — no pipeline logic is reimplemented here."
 )

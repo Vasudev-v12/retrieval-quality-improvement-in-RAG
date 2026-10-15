@@ -9,8 +9,17 @@ pandas
 pypdf
 streamlit
 rank-bm25
-# Optional: only needed by the legacy KeyBERT-based query_gen.py utility,
-# which is not used by the current main.py pipeline (optimizer.py is used
-# instead). Uncomment if you want to run query_gen.py or its __main__ demo.
-# spacy
-# keybert
+# Query generation (rag_optimizer/query_gen.py). Also run:
+#     python -m spacy download en_core_web_sm
+spacy
+keybert
+
+# Benchmark evaluation (benchmarks/prepare_benchmarks.py, ragas_eval.py).
+# ragas 0.4.x still imports langchain_community.chat_models.vertexai, which
+# langchain-community 0.4 removed, so keep langchain-community on 0.3.x.
+ragas==0.4.3
+langchain-community==0.3.31
+datasets
+pyarrow
+# datasets pulls huggingface-hub 2.x, which transformers (KeyBERT) rejects.
+huggingface-hub<2.0

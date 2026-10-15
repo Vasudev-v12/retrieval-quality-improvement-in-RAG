@@ -1,0 +1,774 @@
+[
+  {
+    "id": "medical_01",
+    "question": "Are complex coronary lesions more frequent in patients with diabetes mellitus?",
+    "ground_truth": "Yes. Complex coronary lesions such as bifurcation and ostial lesions were significantly more common in diabetic patients than in nondiabetic patients. Greater age and the presence of DM were independent predictors for these complex lesions. These results may help to explain the poor prognosis of coronary artery disease among diabetic patients.",
+    "source_doc_id": "pubmed_16971978",
+    "reference_contexts": [
+      "Coronary atherosclerotic burden is excessive in diabetic patients. Diabetes mellitus (DM) is an independent predictor for both death and myocardial infarction. It is not known whether the prevalence of complex coronary lesions, such as bifurcation and ostial lesions, is different in diabetics from nondiabetics.",
+      "The aim of present study was to investigate the prevalence of these lesions in patients with DM.",
+      "One thousand fourteen consecutive patients (mean age 61.3+/-10.7 years) were investigated. Coronary angiograms were examined for bifurcation and ostial lesions using a digital quantitative system. Patients were classified as diabetic (n=281) or nondiabetic (n=733).",
+      "Patient mean age, and rates of hypertension and hyperlipidemia were significantly higher in the diabetic group than in the nondiabetic group (P<0.0001), although smoking was significantly lower (P=0.001). Reasons for coronary angiography and treatment were comparable between the two groups. The prevalence of bifurcation lesions and ostial lesions was significantly greater in the diabetic group than in the nondiabetic group (9.8% versus 4.3% [P=0.001] and 38.4% versus 29.2% [P=0.003]in the diabetic group versus the nondiabetic group). The presence of DM and greater age were found to be independent predictors for bifurcation lesions (OR=2.27 [P=0.004] and OR=1.03 [P=0.01], for DM and age, respectively) and ostial lesions (OR=1.40 [P=0.027] and OR=1.02 [P=0.001], for DM and age, respectively) in multivariate analysis."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_02",
+    "question": "Are physicians aware of the side effects of angiotensin-converting enzyme inhibitors?",
+    "ground_truth": "No. Overall, there was a poor knowledge of the side effects of ACE-I. This may account for the increased referrals for chronic cough and angioedema.",
+    "source_doc_id": "pubmed_16100194",
+    "reference_contexts": [
+      "Angiotensin-converting enzyme inhibitors (ACE-I) are considered safe, but they are associated with characteristic side effects, namely cough and angioedema, usually requiring discontinuation. We perceived that referrals for these side effects have become more and more frequent; therefore, we evaluated the degree of knowledge on the safety of ACE-I in different medical categories.",
+      "A questionnaire (13 questions) on side effects of ACE-I was posted to physicians.",
+      "Everyday clinical practice.",
+      "Cardiologists, allergists, and general practitioners (GPs) from the National Healthcare System.",
+      "Three hundred twelve physicians were contacted, and 154 returned questionnaires that could be analyzed. Of the 154 physicians (mean age, 45 years) 48 were cardiologists, 52 were GPs, and 54 were allergists. The percentage of correct answers was low: 31.9% for cardiologists, 40% for GPs, and 33% for allergists. Thus, GPs provided a significantly higher percentage of correct answers with respect to the remaining categories (p = 0.05). The lower rate of correct answers (0 to 15.9%) concerned the time of onset of cough and the action to take. Cardiologists seemed to be less aware of the fact that angiotensin receptor blockers (sartans) can cross-react with ACE-I."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_03",
+    "question": "Amblyopia: is visual loss permanent?",
+    "ground_truth": "No. Older people with a history of amblyopia who develop visual loss in the previously normal eye can experience recovery of visual function in the amblyopic eye over a period of time. This recovery in visual function occurs in the wake of visual loss in the fellow eye and the improvement appears to be sustained.",
+    "source_doc_id": "pubmed_10966943",
+    "reference_contexts": [
+      "The records of 465 patients with an established diagnosis of age related macular degeneration who had attended a specialist macular clinic between 1990 and 1998 were scrutinised. A full clinical examination and standardised refraction had been carried out in 189 of these cases on a minimum of two occasions. Cases were looked for where an improvement of one or more lines of either distance or near acuity was recorded in the eye unaffected by macular disease. In each one of these cases the improvement in visual acuity could not be attributed to treatment of other existing pathology.",
+      "12 such cases were detected. In nine of these the eye showing improvement of acuity had a history of amblyopia. The mean improvement in distance and near acuity in amblyopic eyes by 12 months was 3.3 and 1.9 lines logMAR respectively. The improvement in acuity generally occurred between 1 and 12 months from baseline and remained stable over the period of follow up."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_04",
+    "question": "Parasacral sciatic nerve block: does the elicited motor response predict the success rate?",
+    "ground_truth": "Maybe. Eliciting a tibial motor response predicts a higher success rate than eliciting a peroneal motor response with parasacral sciatic nerve block.",
+    "source_doc_id": "pubmed_17578985",
+    "reference_contexts": [
+      "In this prospective, randomized, double-blind study, we compared the tibial and the peroneal evoked motor response with regard to efficacy of sciatic nerve block using the parasacral approach.",
+      "Twenty-six ASA I-III patients scheduled for elective lower limb surgery were randomized to receive a parasacral sciatic block, using a nerve stimulator technique seeking either a tibial (n = 14) or peroneal (n = 12) motor response. After the evoked motor response was obtained, a solution of 10 mL 2% lidocaine with epinephrine and 10 mL 0.75% ropivacaine (actual final concentration of epinephrine, 1/160,000) was slowly injected through the needle. Sensory and motor blocks were assessed every 5 min for 30 min by an anesthesiologist blinded to the elicited motor response. If the block was not complete 30 min after injection of the local anesthetics, it was considered as failed, and general anesthesia was supplemented.",
+      "Time to perform the block and level of minimal and maximal stimulation were not different between groups. The success rate of complete block was significantly higher in the tibial compared to the peroneal group (11 of 14 vs 2 of 12; P = 0.002)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_05",
+    "question": "Does responsibility affect the public's valuation of health care interventions?",
+    "ground_truth": "Maybe. Our results suggest that people do not attach a simple fixed premium to \"safety-related\" interventions but that preferences depend more subtly on context. The use of the results of such public preference surveys to directly inform policy would therefore be premature.",
+    "source_doc_id": "pubmed_22867778",
+    "reference_contexts": [
+      "Health services often spend more on safety interventions than seems cost-effective. This study investigates whether the public value safety-related health care improvements more highly than the same improvements in contexts where the health care system is not responsible.",
+      "An online survey was conducted to elicit the relative importance placed on preventing harms caused by 1) health care (hospital-acquired infections, drug administration errors, injuries to health care staff), 2) individuals (personal lifestyle choices, sports-related injuries), and 3) nature (genetic disorders). Direct valuations were obtained from members of the public by using a person trade-off or \"matching\" method. Participants were asked to choose between two preventative interventions of equal cost and equal health benefit per person for the same number of people, but differing in causation. If participants indicated a preference, their strength of preference was measured by using person trade-off.",
+      "Responses were obtained from 1030 people, reflecting the sociodemographic mix of the UK population. Participants valued interventions preventing hospital-acquired infections (1.31) more highly than genetic disorders (1.0), although drug errors were valued similarly to genetic disorders (1.07), and interventions to prevent injury to health care staff were given less weight than genetic disorders (0.71). Less weight was also given to interventions related to lifestyle (0.65) and sports injuries (0.41)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_06",
+    "question": "Is zero central line-associated bloodstream infection rate sustainable?",
+    "ground_truth": "Yes. High-quality training, strict compliance with evidence-based guidelines, and thorough documentation is associated with significant reductions in CLABSIs. Mindful organizing may lead to a better understanding of what goes into a unit's ability to handle peak demands and sustain extraordinary performance in the long-term.",
+    "source_doc_id": "pubmed_25986020",
+    "reference_contexts": [
+      "Adoption and implementation of evidence-based measures for catheter care leads to reductions in central line-associated bloodstream infection (CLABSI) rates in the NICU. The purpose of this study is to evaluate whether this rate reduction is sustainable for at least 1 year and to identify key determinants of this sustainability at the NICU of the Floating Hospital for Children at Tufts Medical Center.",
+      "We reviewed the incidence of CLABSIs in the NICU temporally to the implementation of new practice policies and procedures, from July 2008 to December 2013.",
+      "Adoption of standardized care practices, including bundles and checklists, was associated with a significant reduction of the CLABSI rate to zero for>370 consecutive days in our NICU in 2012. Overall, our CLABSI rates decreased from 4.1 per 1000 line days in 2009 (13 infections; 3163 line days) to 0.94 in 2013 (2 infections; 2115 line days), which represents a 77% reduction over a 5-year period. In the first quarter of 2013, there was a brief increase in CLABSI rate to 3.3 per 1000 line days; after a series of interventions, the CLABSI rate was maintained at zero for>600 days. Ongoing training, surveillance, and vigilance with catheter insertion and maintenance practices and improved documentation were identified as key drivers for success."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_07",
+    "question": "Are there mental health differences between francophone and non-francophone populations in manitoba?",
+    "ground_truth": "Maybe. The discrepancy in how Francophones view their mental health and their rates of diagnosed mental disorders may be related to health seeking behaviours in the Francophone population. Community and government agencies should try to improve the mental health of this population through mental health promotion and by addressing language and cultural barriers to health services.",
+    "source_doc_id": "pubmed_25007420",
+    "reference_contexts": [
+      "Francophones may experience poorer health due to social status, cultural differences in lifestyle and attitudes, and language barriers to health care. Our study sought to compare mental health indicators between Francophones and non-Francophones living in the province of Manitoba.",
+      "Two populations were used: one from administrative datasets housed at the Manitoba Centre for Health Policy and the other from representative survey samples. The administrative datasets contained data from physician billings, hospitalizations, prescription drug use, education, and social services use, and surveys included indicators on language variables and on self-rated health.",
+      "Outside urban areas, Francophones had lower rates of diagnosed substance use disorder (rate ratio [RR] = 0.80; 95% CI 0.68 to 0.95) and of suicide and suicide attempts (RR = 0.59; 95% CI 0.43 to 0.79), compared with non-Francophones, but no differences were found between the groups across the province in rates of diagnosed mood disorders, anxiety disorders, dementia, or any mental disorders after adjusting for age, sex, and geographic area. When surveyed, Francophones were less likely than non-Francophones to report that their mental health was excellent, very good, or good (66.9%, compared with 74.2%)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_08",
+    "question": "Is perforation of the appendix a risk factor for tubal infertility and ectopic pregnancy?",
+    "ground_truth": "Maybe. The methodologic weaknesses of the studies do not permit acceptance of increased risk of tubal pregnancy or infertility as a consequence of perforation of the appendix, so a causal relationship cannot be supported by the data currently available. Only a well-designed case-control study with unbiased ascertainment of exposure and adjustment for confounding variables will provide a definitive answer.",
+    "source_doc_id": "pubmed_10223070",
+    "reference_contexts": [
+      "To critically assess the evidence that appendiceal perforation is a risk factor for subsequent tubal infertility or ectopic pregnancy.",
+      "Epidemiologic studies investigating the relationship between appendectomy and infertility or ectopic pregnancy were identified by searching the MEDLINE database from 1966 to 1997. Appropriate citations were also extracted from a manual search of the bibliographies of selected papers.",
+      "Twenty-three articles were retrieved. Only 4 presented original data including comparisons to a nonexposed control group and they form the basis for this study.",
+      "Because the raw data or specific techniques of data analysis were not always explicitly described, indices of risk for exposure were extracted from the data as presented and were analysed without attempting to convert them to a common measure.",
+      "Articles were assessed according to the criteria of the Evidence-Based Medicine Working Group for evaluating articles on harm. Review of the literature yielded estimates of the risk of adverse fertility outcomes ranging from 1.6 (95% confidence interval [CI] 1.1 to 2.5) for ectopic pregnancy after an appendectomy to 4.8 (95% CI 1.5 to 14.9) for tubal infertility from perforation of the appendix. Recall bias, and poor adjustment for confounding variables in some reports, weakened the validity of the studies."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_09",
+    "question": "Does case-mix based reimbursement stimulate the development of process-oriented care delivery?",
+    "ground_truth": "Yes. This study demonstrates that hospital management can stimulate the development of care programmes by the adoption of case-mix reimbursement within hospitals' budgeting processes. Future research is recommended to confirm this finding and to determine whether the establishment of care programmes will in time indeed lead to a more process-oriented view of professionals.",
+    "source_doc_id": "pubmed_20605051",
+    "reference_contexts": [
+      "Reimbursement based on the total care of a patient during an acute episode of illness is believed to stimulate management and clinicians to reduce quality problems like waiting times and poor coordination of care delivery. Although many studies already show that this kind of case-mix based reimbursement leads to more efficiency, it remains unclear whether care coordination improved as well. This study aims to explore whether case-mix based reimbursement stimulates development of care coordination by the use of care programmes, and a process-oriented way of working.",
+      "Data for this study were gathered during the winter of 2007/2008 in a survey involving all Dutch hospitals. Descriptive and structural equation modelling (SEM) analyses were conducted.",
+      "SEM reveals that adoption of the case-mix reimbursement within hospitals' budgeting processes stimulates hospitals to establish care programmes by the use of process-oriented performance measures. However, the implementation of care programmes is not (yet) accompanied by a change in focus from function (the delivery of independent care activities) to process (the delivery of care activities as being connected to a chain of interdependent care activities)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_10",
+    "question": "Cycloplegic autorefraction in young adults: is it mandatory?",
+    "ground_truth": "Maybe. Young hypermetropic adults possessed +1 to +2 D of latent hypermetropia. In contrast, young myopic adults revealed pseudomyopia of -0.5 D. Cycloplegic refraction should be performed in young hypermetropic adults complaining of various signs of asthenopia.",
+    "source_doc_id": "pubmed_26686513",
+    "reference_contexts": [
+      "The precise correction of refractive error is especially important in young adults. It is unclear whether cycloplegic refraction is necessary in this age group. The purpose of this study was to compare the non-cycloplegic and cycloplegic spherical equivalent (SE) refractive error measured in young adults.",
+      "This was a prospective study of 1400 eyes (n = 700) of enlisted soldiers aged 18 to 21 years who were consecutively evaluated in an outpatient army ophthalmology clinic. One drop of cyclopentolate 1 % was installed twice 10 min apart, and cycloplegic refraction was performed in both eyes 40 min later using an auto-refractor. The difference between non-cycloplegic and cycloplegic refractive measurements was analyzed.",
+      "The mean difference in SE between non-cycloplegic and cycloplegic measurements was 0.68 ± 0.83 D (95 % CI, 0.64-0.72). Significantly greater differences were observed in hypermetropes than myopes (1.30 ± 0.90 D versus 0.46 ± 0.68 D, p < 0.001). Moderate hypermetropes (2 to 5 D) demonstrated significantly greater refractive error than mild (0.5 to 2 D) or severe (>5 D) hypermetropes (1.71 ± 1.18 D versus 1.19 ± 0.74 D and 1.16 ± 1.08 D respectively, p < 0.001)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_11",
+    "question": "Does normothermic normokalemic simultaneous antegrade/retrograde perfusion improve myocardial oxygenation and energy metabolism for hypertrophied hearts?",
+    "ground_truth": "No. Normothermic normokalemic simultaneous antegrade/retrograde perfusion did not improve, but slightly impaired myocardial oxygenation and energy metabolism of beating hypertrophied hearts relative to NNAP. Therefore, NNSP for protection of beating hypertrophied hearts during valve surgery should be used with extra caution.",
+    "source_doc_id": "pubmed_17462393",
+    "reference_contexts": [
+      "Beating-heart valve surgery appears to be a promising technique for protection of hypertrophied hearts. Normothermic normokalemic simultaneous antegrade/retrograde perfusion (NNSP) may improve myocardial perfusion. However, its effects on myocardial oxygenation and energy metabolism remain unclear. The present study was to determine whether NNSP improved myocardial oxygenation and energy metabolism of hypertrophied hearts relative to normothermic normokalemic antegrade perfusion (NNAP).",
+      "Twelve hypertrophied pig hearts underwent a protocol consisting of three 20-minute perfusion episodes (10 minutes NNAP and 10 minutes NNSP in a random order) with each conducted at a different blood flow in the left anterior descending coronary artery (LAD [100%, 50%, and 20% of its initial control]). Myocardial oxygenation was assessed using near-infrared spectroscopic imaging. Myocardial energy metabolism was monitored using localized phosphorus-31 magnetic resonance spectroscopy.",
+      "With 100% LAD flow, both NNAP and NNSP maintained myocardial oxygenation, adenosine triphosphate, phosphocreatine, and inorganic phosphate at normal levels. When LAD flow was reduced to 50% of its control level, NNSP resulted in a small but significant decrease in myocardial oxygenation and phosphocreatine, whereas those measurements did not change significantly during NNAP. With LAD flow further reduced to 20% of its control level, both NNAP and NNSP caused a substantial decrease in myocardial oxygenation, adenosine triphosphate, and phosphocreatine with an increase in inorganic phosphate. However, the changes were significantly greater during NNSP than during NNAP."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_12",
+    "question": "Prognostic factors for cervical spondylotic amyotrophy: are signs of spinal cord involvement associated with the neurological prognosis?",
+    "ground_truth": "Yes. The presence of a high signal intensity change on T2-weighted MRI and the pyramidal tract sign can be used as prognostic factors for patients with CSA.",
+    "source_doc_id": "pubmed_24614851",
+    "reference_contexts": [
+      "The purpose of this study was to clarify the prognostic factors for cervical spondylotic amyotrophy (CSA).",
+      "The authors retrospectively reviewed the medical records of 47 consecutive patients with CSA in whom the presence/absence of the pyramidal tract sign was noted. We analyzed whether the age, sex, presence of diabetes mellitus, medication (vitamin B12), type of the most atrophic and impaired muscle, the muscle strength at the presentation, the presence of the pyramidal tract sign, magnetic resonance imaging (MRI) findings, including the presence and number of T2 high signal intensity areas (T2 HIA) in the spinal cord and the conversion to surgery were associated with the recovery of muscle strength in the patients. In addition, we also investigated whether the duration of symptoms before surgery and the type of surgery were associated with the recovery of muscle strength in patients who required conversion to surgical treatment.",
+      "The presence of T2 HIA on MRI (P=0.002), the number of T2 HIA on MRI (P=0.002) and conversion to surgery (P=0.015) were found to be significantly associated with a poorer recovery at the observational final follow-up. Further, the presence of the pyramidal tract sign (P=0.043) was significantly associated with a poor recovery at the final follow-up after surgery."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_13",
+    "question": "Does exercise during pregnancy prevent postnatal depression?",
+    "ground_truth": "No. We did not find a lower prevalence of high EPDS scores among women randomized to regular exercise during pregnancy compared with the control group. However, a subgroup of women in the intervention group who did not exercise regularly prior to pregnancy had a reduced risk of postnatal depression.",
+    "source_doc_id": "pubmed_21880023",
+    "reference_contexts": [
+      "To study whether exercise during pregnancy reduces the risk of postnatal depression.",
+      "Randomized controlled trial.",
+      "Trondheim and Stavanger University Hospitals, Norway.",
+      "Eight hundred and fifty-five pregnant women were randomized to intervention or control groups.",
+      "The intervention was a 12 week exercise program, including aerobic and strengthening exercises, conducted between week 20 and 36 of pregnancy. One weekly group session was led by physiotherapists, and home exercises were encouraged twice a week. Control women received regular antenatal care.",
+      "Edinburgh Postnatal Depression Scale (EPDS) completed three months after birth. Scores of 10 or more and 13 or more suggested probable minor and major depression, respectively.",
+      "Fourteen of 379 (3.7%) women in the intervention group and 17 of 340 (5.0%) in the control group had an EPDS score of ≥10 (p=0.46), and four of 379 (1.2%) women in the intervention group and eight of 340 (2.4%) in the control group had an EPDS score of ≥13 (p=0.25). Among women who did not exercise prior to pregnancy, two of 100 (2.0%) women in the intervention group and nine of 95 (9.5%) in the control group had an EPDS score of ≥10 (p=0.03)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_14",
+    "question": "Risk stratification in emergency surgical patients: is the APACHE II score a reliable marker of physiological impairment?",
+    "ground_truth": "Yes. For risk stratification in emergency surgical patients, it is essential to measure the APACHE II score before surgical treatment. Longitudinal APACHE II scoring reveals continuous improvement of the score in surviving patients but has no therapeutic relevance in the individual patient.",
+    "source_doc_id": "pubmed_11146778",
+    "reference_contexts": [
+      "The APACHE II (Acute Physiology and Chronic Health Evaluation II) score used as an intensive care unit (ICU) admission score in emergency surgical patients is not independent of the effects of treatment and might lead to considerable bias in the comparability of defined groups of patients and in the evaluation of treatment policies. Postoperative monitoring with the APACHE II score is clinically irrelevant.",
+      "Inception cohort study.",
+      "Secondary referral center.",
+      "Eighty-five consecutive emergency surgical patients admitted to the surgical ICU in 1999. The APACHE II score was calculated before surgery; after admission to the ICU; and on postoperative days 3, 7, and 10.",
+      "APACHE II scores and predicted and observed mortality rates.",
+      "The mean +/- SD APACHE II score of 24.2 +/- 8.3 at admission to the ICU was approximately 36% greater than the initial APACHE II score of 17.8 +/- 7.7, a difference that was highly statistically significant (P<.001). The overall mortality of 32% favorably corresponds with the predicted mortality of 34% according to the initial APACHE II score. However, the predicted mortality of 50% according to the APACHE II score at admission to the ICU was significantly different from the observed mortality rate (P =.02). In 40 long-term patients (>/=10 days in the ICU), the difference between the APACHE II scores of survivors and patients who died was statistically significant on day 10 (P =.04)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_15",
+    "question": "Detailed analysis of sputum and systemic inflammation in asthma phenotypes: are paucigranulocytic asthmatics really non-inflammatory?",
+    "ground_truth": "Maybe. This study demonstrates that a significant eosinophilic inflammation is present across all categories of asthma, and that paucigranulocytic asthma may be seen as a low grade inflammatory disease.",
+    "source_doc_id": "pubmed_27044366",
+    "reference_contexts": [
+      "The technique of induced sputum has allowed to subdivide asthma patients into inflammatory phenotypes according to their level of granulocyte airway infiltration. There are very few studies which looked at detailed sputum and blood cell counts in a large cohort of asthmatics divided into inflammatory phenotypes. The purpose of this study was to analyze sputum cell counts, blood leukocytes and systemic inflammatory markers in these phenotypes, and investigate how those groups compared with healthy subjects.",
+      "We conducted a retrospective cross-sectional study on 833 asthmatics recruited from the University Asthma Clinic of Liege and compared them with 194 healthy subjects. Asthmatics were classified into inflammatory phenotypes.",
+      "The total non-squamous cell count per gram of sputum was greater in mixed granulocytic and neutrophilic phenotypes as compared to eosinophilic, paucigranulocytic asthma and healthy subjects (p < 0.005). Sputum eosinophils (in absolute values and percentages) were increased in all asthma phenotypes including paucigranulocytic asthma, compared to healthy subjects (p < 0.005). Eosinophilic asthma showed higher absolute sputum neutrophil and lymphocyte counts than healthy subjects (p < 0.005), while neutrophilic asthmatics had a particularly low number of sputum macrophages and epithelial cells. All asthma phenotypes showed an increased blood leukocyte count compared to healthy subjects (p < 0.005), with paucigranulocytic asthmatics having also increased absolute blood eosinophils compared to healthy subjects (p < 0.005). Neutrophilic asthma had raised CRP and fibrinogen while eosinophilic asthma only showed raised fibrinogen compared to healthy subjects (p < 0.005)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_16",
+    "question": "Is portable ultrasonography accurate in the evaluation of Schanz pin placement during extremity fracture fixation in austere environments?",
+    "ground_truth": "Yes. Despite the statistical imparity of pin protrusion measurement via ultrasound compared to that of gross dissection, a consideration of the clinical relevance of ultrasound measurement bias during an austere operating theatre leads to the conclusion that ultrasonography is an adequate methodology for Schanz pin protrusion measurement.",
+    "source_doc_id": "pubmed_24352924",
+    "reference_contexts": [
+      "The purpose of this study was to investigate the efficacy of ultrasonography to confirm Schanz pin placement in a cadaveric model, and the interobserver repeatability of the ultrasound methodology.",
+      "This investigation is a repeated measures cadaveric study with multiple examiners.",
+      "Cadaveric preparation and observations were done by an orthopaedic traumatologist and resident, and two general surgery traumatologists.",
+      "A total of 16 Schanz pins were equally placed in bilateral femora and tibiae. Four examiners took measurements of pin protrusion beyond the distal cortices using first ultrasonography and then by direct measurement after gross dissection.MAIN OUTCOME MEASURE(S): Distal Schanz pin protrusion length measurements from both ultrasonography and direct measurement post dissection.",
+      "Schanz pin protrusion measurements are underestimated by ultrasonography (p<0.01) by an average of 10 percent over the range of 5 to 18 mm, and they display a proportional bias that increases the under reporting as the magnitude of pin protrusion increases. Ultrasound data demonstrate good linear correlation and closely represent actual protrusion values in the 5 to 12 mm range. Interobserver repeatability analysis demonstrated that all examiners were not statistically different in their measurements despite minimal familiarity with the ultrasound methodology (p>0.8)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_17",
+    "question": "Can dobutamine stress echocardiography induce cardiac troponin elevation?",
+    "ground_truth": "No. Our results indicate that there is no elevation of cTn despite the occurrence of significant WMAs on DSE. We conclude that cTnI cannot be used as an additional diagnostic tool during pharmacological stress test performed to evaluate the presence and severity of ischemia.",
+    "source_doc_id": "pubmed_21198823",
+    "reference_contexts": [
+      "Elevation of cardiac troponin (cTn) is considered specific for myocardial damage. Elevated cTn and echocardiogrpahic documentation of wall motion abnormalities (WMAs) that were recorded after extreme physical effort raise the question whether dobutamine stress echo (DSE), can also induce elevation of troponin.",
+      "we prospective enrolled stable patients (age>18 years) referred to DSE. The exam was performed under standardized conditions. Blood samples for cTnI were obtained at baseline and 18-24 hours after the test. We aimed to compare between the clinical and echocardiographic features of patients with elevated cTnI and those without cTnI elevations.",
+      "Fifty-seven consecutive patients were included. The average age was 64.4 ± 10.7, 73% of the patients were males, and nearly half of the patients were known to have ischemic heart disease. Two of the patients were excluded due to technical difficulty. No signs of ischemia were recorded in 25 (45.4%). Among the patients with established ischemia on DSE, 12 (22%) had mild ischemia, 13 (23.6%) had moderate and 5 (9%) had severe ischemia. Angiography was performed in 13 (26%) of the patients, of which 7 had PCI and one was referred to bypass surgery. None of the patients had elevated cTnI 18-24 hours after the DSE."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_18",
+    "question": "Is a mandatory general surgery rotation necessary in the surgical clerkship?",
+    "ground_truth": "No. Effective undergraduate surgical education can be offered in many specialty settings. Removal of the requirement for general surgery in clerkship may lead to a more effective use of all educational opportunities. A careful analysis of local programs and facilities is necessary before suggesting this change to other institutions.",
+    "source_doc_id": "pubmed_9645785",
+    "reference_contexts": [
+      "Changes in the spectrum of general surgery and the delivery of surgical care have placed the requirement for a mandatory general surgery rotation in the surgical clerkship in question.",
+      "We tested the hypothesis that equal mastery of surgical clerkship objectives can be obtained in a clerkship with and without general surgery. Students chose any two surgical rotations and were assessed by written examination, objective structured clinical examination (OSCE), ward evaluations, self-assessment objectives questionnaire, and satisfaction survey.",
+      "Data for 54 students showed no differences in scores between groups on any parameter. No specific concerns related to the absence of general surgery were identified."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_19",
+    "question": "Necrotizing fasciitis: an indication for hyperbaric oxygenation therapy?",
+    "ground_truth": "No. The results of this study cast doubt on the suggested advantage of HBO in reducing patient mortality and morbidity when used as adjuvant therapy for NF.",
+    "source_doc_id": "pubmed_7482275",
+    "reference_contexts": [
+      "The accepted treatment protocol for necrotizing fasciitis (NF) consists of extensive surgery and wide spectrum antibiotics. Hyperbaric oxygenation (HBO) has been recommended as adjuvant therapy for NF, improving patient mortality and outcome. However, the beneficial effect of HBO for NF remains controversial.",
+      "A retrospective evaluation of treatment outcome in 37 patients treated for NF between 1984 and 1993 was carried out. The mortality rate, morbidity criteria, and risk factors for grave prognosis were compared between a group of 25 patients who received HBO as part of their treatment protocol and a group of the remaining 12 patients treated by surgical excision and antibiotics alone.",
+      "The two groups were found to be similar with regard to age, gender, the incidence of individual risk factors for ominous prognosis, and the Acute Physiology and Chronic Health Evaluation (APACHE) II score for disease's severity on presentation. The mortality rate among the HBO-treated patients was 36%, as opposed to 25% in the non-HBO group. The mean number of surgical débridements required per patient was significantly higher in the HBO group: 3.3 compared with 1.5 in the non-HBO-treated patients. Although the average length of hospitalization for survivors was shorter for the HBO group, the difference between the groups did not reach statistical significance."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_20",
+    "question": "Can increases in the cigarette tax rate be linked to cigarette retail prices?",
+    "ground_truth": "No. Numerous studies have found that taxation is one of the most effective policy instruments for tobacco control. However, these findings come from countries that have market economies where market forces determine prices and influence how cigarette taxes are passed to the consumers in retail prices. China's tobacco industry is not a market economy; therefore, non-market forces and the current Chinese tobacco monopoly system determine cigarette prices. The result is that tax increases do not necessarily get passed on to the retail price.",
+    "source_doc_id": "pubmed_23076787",
+    "reference_contexts": [
+      "To explain China's cigarette pricing mechanism and the role of the Chinese State Tobacco Monopoly Administration (STMA) on cigarette pricing and taxation.",
+      "Published government tobacco tax documentation and statistics published by the Chinese STMA are used to analyse the interrelations among industry profits, taxes and retail price of cigarettes in China.",
+      "The 2009 excise tax increase on cigarettes in China has not translated into higher retail prices because the Chinese STMA used its policy authority to ensure that retail cigarette prices did not change. The government tax increase is being collected at both the producer and wholesale levels. As a result, the 2009 excise tax increase in China has resulted in higher tax revenue for the government and lower profits for the tobacco industry, with no increase in the retail price of cigarettes for consumers."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_21",
+    "question": "Diagnostic and therapeutic ureteroscopy: is dilatation of ureteral meatus always necessary?",
+    "ground_truth": "No. In selected cases, ureteroscopy may be performed without ureteral meatus dilatation with success and morbidity rates similar to when the procedure is performed with meatal dilatation.",
+    "source_doc_id": "pubmed_19925761",
+    "reference_contexts": [
+      "To assess the feasibility and safety of diagnostic or therapeutic semirigid ureteroscopy without ureteral meatus dilatation.",
+      "A comparative, retrospective study was conducted of patients undergoing ureteroscopy from January 2000 to May 2008. For data analysis purposes, the population was divided into two groups based on whether ureteroscopy had been performed with (Group 1) or without (Group 2) ureteral meatus dilatation. Variables recorded included age, sex, type of procedure, surgical diagnosis, passive or active dilatation, number of stones, stone location, stone diameter, peroperative and postoperative complications, internal urinary diversion after the procedure, therapeutic success rate, operating time, and hospital stay duration. A 8-9.8 Fr Wolf semirigid ureteroscope was used. Descriptive statistics of the population and cohorts were performed, providing medians, quartiles, and limit values for non-normally distributed interval variables, and absolute and relative frequencies for categorical variables. Shapiro-Wilk's, Mann-Whitney's U, Chi-square, and Fisher's exact tests were used for statistical analysis. A value of p 2 alpha<or = 0.005 was considered statistically significant. Arcus Quickstat Biomedical 1.0 software was used.",
+      "Among the 306 ureteroscopies studied, 286 performed in 256 patients were analyzed. Median age was 50 years (16-83), 59% of patients were male, and elective ureteroscopy was performed in 183 patients (64%). Group 1: 191 ureteroscopies, Group 2: 95 ureteroscopies. Stone location: 149 in distal ureter, 60 in middle ureter, and 35 in proximal ureter. Sixty-nine percent of stones had sizes ranging from 5 and 10 mm. The overall success rate was 86.5%. There were 5 peroperative and 22 postoperative complications, with no statistically significant differences between the groups."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_22",
+    "question": "Does rugby headgear prevent concussion?",
+    "ground_truth": "Maybe. Although most players in the study believe that rugby headgear may prevent concussion, only a minority reported wearing it. Coaches tended to be less convinced than the players that rugby headgear can prevent concussion.",
+    "source_doc_id": "pubmed_11867487",
+    "reference_contexts": [
+      "To examine the attitudes of players and coaches to the use of protective headgear, particularly with respect to the prevention of concussion.",
+      "A questionnaire designed to assess attitudes to headgear was administered to 63 players from four different Canadian teams, each representing a different level of play (high school, university, community club, national). In addition, coaches from all four levels were questioned about team policies and their personal opinions about the use of headgear to prevent concussion.",
+      "Although the players tended to believe that the headgear could prevent concussion (62%), the coaches were less convinced (33%). Despite the players' belief that headgear offers protection against concussion, only a minority reported wearing headgear (27%) and few (24%) felt that its use should be made mandatory. Common reasons for not wearing headgear were \"its use is not mandatory\", \"it is uncomfortable\", and \"it costs too much\"."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_23",
+    "question": "Living in an urban environment and non-communicable disease risk in Thailand: Does timing matter?",
+    "ground_truth": "Yes. Urbanicity was associated with increases in behavioral and physiological risk factors. However, these associations may not translate directly into increases in biological risk factors. It is likely that these biological risk factors were results of a complex interaction between both long term accumulation of exposure and early life exposures.",
+    "source_doc_id": "pubmed_25747932",
+    "reference_contexts": [
+      "This paper uses a life-course approach to explore whether the timing and/or duration of urban (vs rural) exposure was associated with risk factors for NCDs.",
+      "A cross-sectional survey was conducted among health care workers in two hospitals in Thailand. Two measures of urbanicity were considered: early-life urban exposure and the proportion of urban life years. We explored four behavioral NCD risk factors, two physiological risk factors and four biological risk factors.",
+      "Both measures of urbanicity were each independently associated with increases in all behavioral and physiological risk factors. For some biological risk factors, people spending their early life in an urban area may be more susceptible to the effect of increasing proportion of urban life years than those growing up in rural areas."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_24",
+    "question": "Laparoscopic-assisted ileocolic resections in patients with Crohn's disease: are abscesses, phlegmons, or recurrent disease contraindications?",
+    "ground_truth": "No. The laparoscopic-assisted approach to Crohn's disease is feasible and safe with good outcomes. Co-morbid preoperative findings such as abscess, phlegmon, or recurrent disease at the previous ileocolic anastomosis are not contraindications to a successful laparoscopic-assisted ileocolic resection in select patients.",
+    "source_doc_id": "pubmed_9347843",
+    "reference_contexts": [
+      "Because of the inflammatory nature of Crohn's disease, ileocolic resections are often difficult to perform, especially if an abscess, phlegmon, or recurrent disease at a previous ileocolic anastomosis is present. Our goal was to determine whether the above factors are contraindications to a successful laparoscopic-assisted ileocolic resection.",
+      "Between 1992 and 1996, 46 laparoscopic-assisted ileocolic resections were attempted. Fourteen patients had an abscess or phlegmon treated with bowel rest before operation (group I), 10 patients had recurrent Crohn's disease at the previous ileocolic anastomosis (group II), and 22 patients had no previous operation and no phlegmon or abscess associated with their disease (group III). These groups were compared with each other and with 70 consecutive open ileocolic resections for Crohn's disease during the same time period (group IV).",
+      "Operative blood loss and time were greater in group IV than in groups I, II, and III (245 versus 151, 131, and 195 ml, respectively, and 202 versus 152, 144, and 139 minutes, respectively). Conversion to open procedure occurred in 5 patients (group I, 1 [7%]; group II, 2 [20%]; group III, 2 [9%]). Morbidity was highest in group IV (21% versus 0%, 10%, and 10%, respectively). Only one patient died (group IV, 1%). Length of hospital stay was longest in group IV (7.9 versus 4.8, 3.9, and 4.5 days, respectively)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_25",
+    "question": "Does HER2 immunoreactivity provide prognostic information in locally advanced urothelial carcinoma patients receiving adjuvant M-VEC chemotherapy?",
+    "ground_truth": "Maybe. HER2 immunoreactivity might have a limited prognostic value for advanced urothelial carcinoma patients with adjuvant M-VEC.",
+    "source_doc_id": "pubmed_17940352",
+    "reference_contexts": [
+      "To evaluate the impact of HER2 immunoreactivity on clinical outcome in locally advanced urothelial carcinoma patients who received surgery alone, or methotrexate, vinblastine, epirubicin, and cisplatin (M-VEC) as adjuvant chemotherapy.",
+      "We studied 114 formalin-fixed paraffin-embedded specimens obtained from locally advanced urothelial carcinoma patients receiving surgery alone or adjuvant M-VEC. The authors evaluated HER2 immunoreactivity using immunohistochemical staining and explored the influence of pathological parameters and HER2 immunoreactivity on progression-free survival (PFS) and disease-specific overall survival (OS) using univariate and multivariate Cox's analyses.",
+      "Urothelial carcinoma of the bladder had a significantly higher frequency of HER2 immunoreactivity than that of the upper urinary tract (60.7 vs. 20.7%, p<0.0001). Overall, nodal status was a strong and independent prognostic indicator for clinical outcome. The HER2 immunoreactivity was significantly associated with PFS (p = 0.02) and disease-specific OS (p = 0.005) in advanced urothelial carcinoma patients. As for patients with adjuvant M-VEC, HER2 immunoreactivity was a significant prognostic factor for PFS (p = 0.03) and disease-specific OS (p = 0.02) using univariate analysis, but not multivariate analysis, and not for patients receiving watchful waiting."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_26",
+    "question": "Do inhaled steroids differ from cromones in terms of hospital admission rates for asthma in children?",
+    "ground_truth": "Yes. Our results suggest that inhaled steroids are better than cromones in preventing admissions for asthma when two provinces with different practices for maintenance medication of steady-state asthma were compared.",
+    "source_doc_id": "pubmed_15841770",
+    "reference_contexts": [
+      "Annual data on children aged under 16 y treated for asthma, including consumption of regular medication for asthma, numbers of hospital periods, lengths of hospitalizations and annual proportions of readmissions, were collected using patient-specific medical records from 1995 to 1999. In the Kuopio province, on average, 35.6-36.7/1000 children were on maintenance for asthma, of which 23% were receiving cromones, 51% were taking inhaled steroids and 26% were treated with cromones plus intermittent steroids. In the Oulu province, the respective prevalence was 32.7-34.9/1000, and the respective proportions were 5%, 93% and 2%.",
+      "Total and first admissions, as well as hospital days were clearly less in the Oulu province. In the children aged>or = 6y, the average annual total admissions were 0.3/1000 (Oulu) vs 1.2/1000 (Kuopio) (p<0.001). Similarly, the first admissions were 0.2/1000 vs 1.0/1000 (p<0.001), proportions of readmissions 6.3% vs 19.3% (p<0.05), and numbers of hospital days 0.7/1000 vs 3.8/1000 (p<0.001). The differences were in the same direction, though less prominent, also among children 2-5 y of age."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_27",
+    "question": "Is vitamin D deficiency a feature of pediatric celiac disease?",
+    "ground_truth": "No. Our data showed no difference in 25(OH) D levels between normal children and those with CD when adjusted for body mass index.",
+    "source_doc_id": "pubmed_22876568",
+    "reference_contexts": [
+      "Celiac disease (CD) is an autoimmune enteropathy characterized by villus atrophy and malabsorption of essential nutrients. Vitamin D deficiency has been described in autoimmune diseases, but its status in prepubertal children with CD has not been adequately studied.",
+      "To determine the vitamin D status of prepubertal children with CD.",
+      "A retrospective study of prepubertal children aged 3-12 years with CD (n=24) who were compared to prepubertal, non-CD children of the same age (n=50). Children were included in the study if they had a diagnosis of CD by intestinal biopsy, and were not on a gluten-free diet (GFD). Patients were excluded if they had diseases of calcium or vitamin D metabolism, or were receiving calcium or vitamin D supplementation or had other autoimmune diseases. All subjects had their serum 25-hydroxyvitamin D [25(OH)D] level measured.",
+      "There was no difference in 25(OH)D level between the CD and non-CD children (27.58 +/- 9.91 versus 26.20 +/- 10.45, p = 0.59). However, when the patients were subdivided into obese and non-obese groups, the non-obese CD patients had a significantly higher 25(OH)D level than the obese normal children (28.39 +/- 10.26 versus 21.58 +/- 5.67, p = 0.009). In contrast, there was no difference in 25(OH)D level between non-obese CD patients and non-obese normal children (28.39 +/- 10.26 versus 30.64 +/-12.08, p = 0.52). The season of 25(OH)D measurement was not a significant confounder (p =0.7)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_28",
+    "question": "Do parents recall and understand children's weight status information after BMI screening?",
+    "ground_truth": "Maybe. While parents remember that their child's body mass index is higher than recommended, they are unable to remember much of the information and advice provided about the result.",
+    "source_doc_id": "pubmed_25079920",
+    "reference_contexts": [
+      "As parents of young children are often unaware their child is overweight, screening provides the opportunity to inform parents and provide the impetus for behaviour change. We aimed to determine if parents could recall and understand the information they received about their overweight child after weight screening.",
+      "Randomised controlled trial of different methods of feedback.",
+      "Participants were recruited through primary and secondary care but appointments took place at a University research clinic.",
+      "1093 children aged 4-8 years were screened. Only overweight children (n=271, 24.7%) are included in this study. Parents of overweight children were randomised to receive feedback regarding their child's weight using best practice care (BPC) or motivational interviewing (MI) at face-to-face interviews typically lasting 20-40 min. 244 (90%) parents participated in a follow-up interview 2 weeks later to assess recall and understanding of information from the feedback session.",
+      "Interviews were audio-taped and transcribed verbatim before coding for amount and accuracy of recall. Scores were calculated for total recall and sub-categories of interest.",
+      "Overall, 39% of the information was recalled (mean score 6.3 from possible score of 16). Parents given feedback via BPC recalled more than those in the MI group (difference in total score 0.48; 95% CI 0.05 to 0.92). Although 94% of parents were able to correctly recall their child's weight status, fewer than 10 parents could accurately describe what the measurements meant. Maternal education (0.81; 0.25 to 1.37) and parental ratings of how useful they found the information (0.19; 0.04 to 0.35) were significant predictors of recall score in multivariate analyses."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_29",
+    "question": "Is the covering of the resection margin after distal pancreatectomy advantageous?",
+    "ground_truth": "No. The results show no significant difference in the fistula rate after covering of the resection margin after distal pancreatectomy, which contributes to the picture of an unsolved problem.",
+    "source_doc_id": "pubmed_24073931",
+    "reference_contexts": [
+      "In recent years, many advances in pancreatic surgery have been achieved. Nevertheless, the rate of pancreatic fistula following pancreatic tail resection does not differ between various techniques, still reaching up to 30% in prospective multicentric studies. Taking into account contradictory results concerning the usefulness of covering resection margins after distal pancreatectomy, we sought to perform a systematic, retrospective analysis of patients that underwent distal pancreatectomy at our center.",
+      "We retrospectively analysed the data of 74 patients that underwent distal pancreatectomy between 2001 and 2011 at the community hospital in Neuss. Demographic factors, indications, postoperative complications, surgical or interventional revisions, and length of hospital stay were registered to compare the outcome of patients undergoing distal pancreatectomy with coverage of the resection margins vs. patients undergoing distal pancreatectomy without coverage of the resection margins. Differences between groups were calculated using Fisher's exact and Mann-Whitney U test.",
+      "Main indications for pancreatic surgery were insulinoma (n=18, 24%), ductal adenocarcinoma (n=9, 12%), non-single-insulinoma-pancreatogenic-hypoglycemia-syndrome (NSIPHS) (n=8, 11%), and pancreatic cysts with pancreatitis (n=8, 11%). In 39 of 74 (53%) patients no postoperative complications were noted. In detail we found that 23/42 (55%) patients with coverage vs. 16/32 (50%) without coverage of the resection margins had no postoperative complications. The most common complications were pancreatic fistulas in eleven patients (15%), and postoperative bleeding in nine patients (12%). Pancreatic fistulas occurred in patients without coverage of the resection margins in 7/32 (22%) vs. 4/42 (1011%) with coverage are of the resection margins, yet without reaching statistical significance. Postoperative bleeding ensued with equal frequency in both groups (12% with coverage versus 13% without coverage of the resection margins). The reoperation rate was 8%. The hospital stay for patients without coverage was 13 days (5-60) vs. 17 days (8-60) for patients with coverage."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_30",
+    "question": "Are patients with diabetes receiving the same message from dietitians and nurses?",
+    "ground_truth": "No. Although some differences existed, RD and RN CDEs are making similar overall recommendations in the treatment of individuals with diabetes.",
+    "source_doc_id": "pubmed_15095519",
+    "reference_contexts": [
+      "The purpose of this study was to determine if registered dietitian (RD) and registered nurse (RN) certified diabetes educators (CDEs) provide similar recommendations regarding carbohydrates and dietary supplements to individuals with diabetes.",
+      "A survey was mailed to CDEs in the southern United States. Participants were asked to indicate their recommendations for use of carbohydrates, fiber, artificial sweeteners, and 12 selected dietary and herbal supplements when counseling individuals with diabetes.",
+      "The survey sample consisted of 366 CDEs: 207 were RNs and 159 were RDs. No statistically significant differences were found between RNs and RDs in typical carbohydrate recommendations for treatment of diabetes. However, RDs were more likely than RNs to make recommendations for fiber intake or use of the glycemic index. A significant difference also was found in the treatment of hypoglycemia: RNs were more likely than RDs to recommend consuming a carbohydrate source with protein to treat hypoglycemia."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_31",
+    "question": "Oral mucocele/ranula: Another human immunodeficiency virus-related salivary gland disease?",
+    "ground_truth": "Yes. This study presents a different clinical picture of oral mucoceles/ranulas, as observed in HIV-positive patients. Additionally, it suggests a possible clinical link between the two pathologies. The authors strongly support the suggestion that oral mucocele/ranula is an HIV-related salivary gland disease.",
+    "source_doc_id": "pubmed_25446909",
+    "reference_contexts": [
+      "To describe clinical characteristics of oral mucoceles/ranulas, with a focus on human immunodeficiency virus (HIV)-related salivary gland diseases.",
+      "A descriptive and clinical study, with review of patient data.",
+      "We reviewed 113 referred cases of oral mucocele. The following anatomical sites were identified: lip, tongue, and floor of the mouth (simple ranulas), as well as plunging ranulas. The age and gender data of the patients with oral mucoceles were recorded. The HIV status of the patients and other information were reviewed.",
+      "There were 30 (26.5%) males and 83 (73.5%) females. Most patients were below 30 years of age, with the peak frequency in the first and second decade. Ranula (simple and plunging) represented 84.1% of the mucocele locations. Mucocele on the lips represented 10.6%. Seventy-two (63.7%) patients were HIV positive; and 97.2% of them had ranulas. Thirty-eight (33.6%) patients presented with plunging ranulas; and 92.1% of them were HIV positive, compared with two patients presenting with plunging ranulas in the HIV-negative group. These results strongly suggest that an HIV-positive patient is statistically (P<0.001) more at risk of presenting with not only a simple, but also a plunging ranula type."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_32",
+    "question": "Knee extensor strength, dynamic stability, and functional ambulation: are they related in Parkinson's disease?",
+    "ground_truth": "Yes. These findings suggest a malleable relationship between knee extensor strength, dynamic stability, and disease severity in PD. Although strength is only one piece of the puzzle in the functional outcome of PD, these findings may assist clinicians in designing appropriate interventions aimed at increasing function and decreasing fall risk in PD.",
+    "source_doc_id": "pubmed_20382292",
+    "reference_contexts": [
+      "To evaluate the relationship between knee extensor strength, postural stability, functional ambulation, and disease severity in Parkinson's disease (PD).",
+      "A cohort study.",
+      "University research laboratory.",
+      "Patients (N=44) with idiopathic PD.",
+      "Not applicable.",
+      "Participants were evaluated on their isokinetic knee extensor strength. Additionally, participants completed an assessment of their postural stability (Functional Reach Test for static stability and a dynamic postural stability assessment as measured by the center of pressure-center of mass moment arm during gait initiation). Participants also underwent an evaluation of their functional ambulation as measured by a 6-minute walk test. Lastly, participants were evaluated by a neurologist specially trained in movement disorders to assess neurologic status and disease severity using the Unified Parkinson's Disease Rating Scale and the Hoehn and Yahr disability score.",
+      "Knee extensor strength positively correlated with dynamic postural stability and negatively correlated with disease severity. Further, dynamic postural stability was negatively correlated to disease severity and positively correlated with functional ambulation in this cohort of patients with PD (P<.05). The results also suggest that the Functional Reach Test may be a valuable assessment tool to examine postural stability in PD."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_33",
+    "question": "Cardiogenic shock complicating acute myocardial infarction in elderly patients: does admission to a tertiary center improve survival?",
+    "ground_truth": "No. In a community-based cohort, patients with acute myocardial infarction complicated by cardiogenic shock did not have significantly different adjusted 30-day and 1-year mortality, irrespective of the revascularization capabilities of the admitting hospital.",
+    "source_doc_id": "pubmed_12040336",
+    "reference_contexts": [
+      "The role of early revascularization among patients with acute myocardial infarction complicated by cardiogenic shock remains controversial. Angioplasty registries, while suggesting a benefit, are subject to selection bias, and clinical trials have been underpowered to detect early benefits. If an invasive strategy is beneficial in this population, patients admitted to hospitals with onsite coronary revascularization might be expected to have a better prognosis. We sought to determine whether access to cardiovascular resources at the admitting hospital influenced the prognosis of patients with acute myocardial infarction complicated by cardiogenic shock.",
+      "By use of the Cooperative Cardiovascular Project database (a retrospective medical record review of Medicare patients discharged with acute myocardial infarction), we identified patients aged>or =65 years whose myocardial infarction was complicated by cardiogenic shock.",
+      "Of the 601 patients with cardiogenic shock, 287 (47.8%) were admitted to hospitals without revascularization services and 314 (52.2%) were admitted to hospitals with coronary angioplasty and coronary artery bypass surgery facilities. Clinical characteristics were similar across the subgroups. Patients admitted to hospitals with revascularization services were more likely to undergo coronary revascularization during the index hospitalization and during the first month after acute myocardial infarction. After adjustment for demographic, clinical, hospital, and treatment strategies, the presence of onsite revascularization services was not associated with a significantly lower 30-day (odds ratio 0.83, 95% CI 0.47, 1.45) or 1-year mortality (odds ratio 0.91, 95% CI 0.49, 1.72)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_34",
+    "question": "Hearing loss: an unknown complication of pre-eclampsia?",
+    "ground_truth": "Yes. Pre-eclampsia is a potential risk factor for cochlear damage and sensorineural hearing loss. Further studies that include routine audiological examinations are needed in these patients.",
+    "source_doc_id": "pubmed_25255719",
+    "reference_contexts": [
+      "This prospective case-control study consisted of 33 patients with pre-eclampsia and 32 normotensive pregnant patients as controls. All of the subjects underwent otoscopic examinations - pure tone audiometry (0.25-16 kHz) and transient evoked otoacoustic emission (1-4 kHz) tests - during their third trimester of pregnancy.",
+      "The mean ages of the patients with pre-eclampsia and the control subjects were 29.6 ± 5.7 and 28.6 ± 5.3 years, respectively. The baseline demographic characteristics, including age, gravidity, parity number, and gestational week, were similar between the two patient groups. Hearing thresholds in the right ear at 1, 4, 8, and 10 kHz and in the left ear at 8 and 10 kHz were significantly higher in the patients with pre-eclampsia compared to the control subjects. The degree of systolic blood pressure measured at the time of diagnosis had a deteriorating effect on hearing at 8, 10, and 12 kHz in the right ear and at 10 kHz in the left ear."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_35",
+    "question": "Does spontaneous remission occur in polyarteritis nodosa?",
+    "ground_truth": "Yes. This case illustrates the importance of considering PAN in the differential diagnosis of renal infarction with inflammatory syndrome and shows that spontaneous remission of renal PAN can occur. .",
+    "source_doc_id": "pubmed_28177278",
+    "reference_contexts": [
+      "Polyarteritis nodosa (PAN) is a systemic vasculitis involving mainly medium-sized arteries and, rarely, small-sized arteries. The diagnosis is principally based on clinical exams, biopsy of an affected organ, and/or arteriography of renal or mesenteric arteries. Once diagnosed, immunosuppressive agents, such as glucocorticoids and cyclophosphamide, are generally introduced as soon as possible. Whether spontaneous remission of PAN occurs is therefore largely unknown.",
+      "We describe the case of a 51-year-old woman who presented with a 4-day-history of intense pain in her left flank, hypertension, fever, microscopic hematuria, and acute renal failure. Contrast-enhanced renal ultrasound strongly suggested bilateral renal infarction. Medical history and an extensive workup allowed to exclude systemic embolism, recreational drug abuse, cardiac arrhythmias, and thrombophilia. A possible diagnosis of PAN was considered; however, within 2 weeks of admission, spontaneous remission of her clinical and biological symptoms occurred without the use of any immunosuppressive treatment. Finally, 3 months later, renal arteriography confirmed the diagnosis of PAN. The patient remains free of symptoms 1 year after initial presentation."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_36",
+    "question": "Does use of hydrophilic guidewires significantly improve technical success rates of peripheral PTA?",
+    "ground_truth": "Maybe. In summary, we report an overall improvement and high technical success rate for peripherial PTA. The use of hydrophilic guidewires made significant difference to the technical success rate of PTA, especially in occlusion and more complicated lesions.",
+    "source_doc_id": "pubmed_16538201",
+    "reference_contexts": [
+      "To determine whether the use of hydrophilic guidewires has increased the technical success rate of peripheral percutaneous transluminal angioplasty (PTA).MATERIAL/",
+      "We performed 125 procedures and analyzed the technical success rates of PTA using the conventional guidewire first and then if needed, the hydrophilic guidewire for iliac and SFA stenoses or occlusions. Angioplasty was performed on 25 stenosed, 25 occluded iliac arteries and 25 stenosed, 50 occluded femoral arteries. The result was defined as technical success when the lesion was crossed by a guidewire and balloon, then it was dilated with restoration of vessel lumen and less than 30% residual stenosis and the rise in ABI values was at least 0.15 after 24 hours.",
+      "The technical success rate after PTA of stenosed iliac arteries was achieved in 96% (24/25) using conventional wires and 100% using hydrophilic guidewire; in iliac occlusions, the rates were 60% (15/25) and 96%, respectively; in femoral stenosis - 84% (21/25) and 100%; in occlusions in the first group: lesions<10 cm -64% (16/25) and 96%, in the second group: lesions>10 cm -48% (12/25) and 88%. In the iliac group, there was no significant difference in the success of iliac stenosis PTA. However, there were significant changes in the success rates of PTA performed for SFA stenosis and iliac and SFA occlusions."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_37",
+    "question": "Does anastomotic leakage affect functional outcome after rectal resection for cancer?",
+    "ground_truth": "No. Continence function remained undisturbed after anastomotic leakage due to rectal resection",
+    "source_doc_id": "pubmed_12607120",
+    "reference_contexts": [
+      "Anastomotic leakage is the most threatening early complication in sphincter-preserving rectal cancer surgery. While the oncological consequences have been well examined, only few data exist about the functional outcome.",
+      "We investigated continence function in 150 patients after curative sphincter-preserving rectal cancer surgery. Functional results were compared in 22 patients with a clinically relevant anastomotic leakage, confirmed radiologically or endoscopically, and 128 patients with uneventful recovery. Evaluation of continence function was based on the Cleveland Clinic Continence Score and was examined in all patients with anastomotic leakage and in 111 patients without complications 107+/-46 weeks postoperatively. Additionally, 14 patients with anastomotic leakage and 58 patients with uneventful recovery underwent anorectal manometry 26+/-15 weeks postoperatively.",
+      "The continence score in patients after anastomotic leakage did not differ significantly from that in patients without complications. Sphincter function was similar. Maximum tolerable volume and rectal compliance were slightly but not significantly worse after leakage."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_38",
+    "question": "30-Day and 1-year mortality in emergency general surgery laparotomies: an area of concern and need for improvement?",
+    "ground_truth": "Maybe. Emergency laparotomy carries a high rate of mortality, especially in those over the age of 70 years, and more needs to be done to improve outcomes, particularly in this group. This could involve increasing acute surgical care manpower, early recognition of patients requiring emergency surgery, development of clear management protocols for such patients or perhaps even considering centralisation of emergency surgical services to specialist centres with multidisciplinary teams involving emergency surgeons and care of the elderly physicians in hospital and related community outreach services for post-discharge care.",
+    "source_doc_id": "pubmed_26037986",
+    "reference_contexts": [
+      "Emergency surgery is associated with poorer outcomes and higher mortality with recent studies suggesting the 30-day mortality to be 14-15%. The aim of this study was to analyse the 30-day mortality, age-related 30-day mortality and 1-year mortality following emergency laparotomy. We hope this will encourage prospective data collection, improvement of care and initiate strategies to establish best practice in this area.",
+      "This was a retrospective study of patients who underwent emergency laparotomy from June 2010 to May 2012. The primary end point of the study was 30-day mortality, age-related 30-day mortality and 1-year all-cause mortality.",
+      "477 laparotomies were performed in 446 patients. 57% were aged<70 and 43% aged>70 years. 30-day mortality was 12, 4% in those aged<70 years and 22% in those>70 years (p<0.001). 1-year mortality was 25, 15% in those aged under 70 years and 38% in those aged>70 years (p<0.001)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "maybe"
+    }
+  },
+  {
+    "id": "medical_39",
+    "question": "Is hypoalbuminemia an independent prognostic factor in patients with gastric cancer?",
+    "ground_truth": "No. Low albumin concentrations are associated with poorer survival in patients with gastric cancer. However, the strength of this relation with survival is dependent on the presence of a systemic inflammatory response, as evidenced by an elevated CRP level. Therefore, it appears that the relation between hypoalbuminemia and poor survival is secondary to that of the systemic inflammatory response.",
+    "source_doc_id": "pubmed_20602101",
+    "reference_contexts": [
+      "Studies have indicated that hypoalbuminemia is associated with decreased survival of patients with gastric cancer. However, the prognostic value of albumin may be secondary to an ongoing systemic inflammatory response. The aim of the study was to assess the relation between hypoalbuminemia, the systemic inflammatory response, and survival in patients with gastric cancer.",
+      "Patients diagnosed with gastric carcinoma attending the upper gastrointestinal surgical unit in the Royal Infirmary, Glasgow between April 1997 and December 2005 and who had a pretreatment measurement of albumin and C-reactive protein (CRP) were studied.",
+      "Most of the patients had stage III/IV disease and received palliative treatment. The minimum follow-up was 15 months. During follow-up, 157 (72%) patients died of their cancer. On univariate analysis, stage (p<0.001), treatment (p<0.001), albumin level (p<0.001), and CRP level (p<0.001) were significant predictors of survival. On multivariate analysis, stage (p<0.001), treatment (p<0.001), and CRP level (p<0.001) remained significant predictors of survival. Albumin was no longer an independent predictor of survival."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_40",
+    "question": "Diabetes mellitus among Swedish art glass workers--an effect of arsenic exposure?",
+    "ground_truth": "No. The observations from this study provide limited support for the possibility that occupational arsenic exposure could play a role in the development of diabetes mellitus. Many other metallic compounds are also used in art glass production, however, and there is a possibility of confounding.",
+    "source_doc_id": "pubmed_8738894",
+    "reference_contexts": [
+      "The purpose of this study was to search for evidence of an association between occupational arsenic exposure and diabetes mellitus, as implied by the relation of this disease to arsenic in drinking water in a recent study from Taiwan.",
+      "A case-referent analysis on death records of 5498 individuals in the art glass producing part of southeastern Sweden was performed. Out of all the enrolled subjects, 888 were glass workers. According to occupational title, glassblowers, foundry workers, and unspecified workers were regarded as potentially exposed to arsenic. Persons with a diagnosis of diabetes mellitus either as an underlying or contributing cause of death were considered cases. Referents were decedents without any indication of cancer, cardiovascular disease, or diabetes.",
+      "A slightly elevated risk [Mantel-Haenszel odds ratio (MH-OR) 1.2, 95% confidence interval (95% CI) 0.82-1.8] was found for diabetes mellitus among the glassworks employees, especially in combination with cardiovascular disease (MH-OR 1.4, 95% CI 0.81-2.3). For the glassblowers, other foundry workers and unspecified glassworkers probably exposed to arsenic, the M-H odds ratio was 1.4 (95% CI 0.92-2.2). Unspecified glass workers, who probably included persons with high exposure, carried the higher risk (MH-OR 1.8, 95% CI 1.1-2.8)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_41",
+    "question": "Is there a relationship between complex fractionated atrial electrograms recorded during atrial fibrillation and sinus rhythm fractionation?",
+    "ground_truth": "No. (1) There is little overlap between regions of CFAEs during AF and regions of SRF measured in the time domain or the frequency domain, (2) the majority of SRF appears to occur in regions with wave-front collision, (3) the distribution of SRF is similar in patients with AF and normal controls, suggesting that this may not have an important role in AF maintenance and may not be a suitable ablation target.",
+    "source_doc_id": "pubmed_21946341",
+    "reference_contexts": [
+      "Ablation of persistent atrial fibrillation (AF) may require adjunctive methods of substrate modification. Both ablation-targeting complex fractionated atrial electrograms (CFAEs) recorded during AF and fractionated electrograms recorded during sinus rhythm (sinus rhythm fractionation [SRF]) have been described. However, the relationship of CFAEs with SRF is unclear.",
+      "Twenty patients (age 62 ± 9 years, 13 males) with persistent AF and 9 control subjects without organic heart disease or AF (age 36 ± 6 years, 4 males) underwent detailed CFAE and SRF left atrial electroanatomic maps. The overlap in left atrial regions with CFAEs and SRF was compared in the AF population, and the distribution of SRF was compared among patients with AF and normal controls. Propagation maps were analyzed to identify the activation patterns associated with SR fractionation.",
+      "SRF (338 ± 150 points) and CFAE (418 ± 135 points) regions comprised 29% ± 14% and 25% ± 15% of the left atrial surface area, respectively. There was no significant correlation between SRF and CFAE maps (r = .2; P = NS). On comparing patients with AF and controls, no significant difference was found in the distribution of SRF between groups (P = .74). Regions of SRF overlapped areas of wave-front collision 75% ± 13% of the time."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_42",
+    "question": "Does growth hormone replacement therapy reduce mortality in adults with growth hormone deficiency?",
+    "ground_truth": "No. GHD men receiving GH treatment have a mortality rate not different from the background population. In women, after exclusion of high-risk patients, mortality was not different from the background population except for CVD. Mortality due to malignancies was not elevated in adults receiving GH treatment. Next to gender, the heterogeneous etiology is of influence on mortality in GHD adults with GH treatment.",
+    "source_doc_id": "pubmed_21849531",
+    "reference_contexts": [
+      "Adults with GH deficiency (GHD) have a decreased life expectancy. The effect of GH treatment on mortality remains to be established.",
+      "This nationwide cohort study investigates the effect of GH treatment on all-cause and cause-specific mortality and analyzes patient characteristics influencing mortality in GHD adults.",
+      "Patients in the Dutch National Registry of Growth Hormone Treatment in Adults were retrospectively monitored (1985-2009) and subdivided into treatment (n = 2229), primary (untreated, n = 109), and secondary control (partly treated, n = 356) groups.",
+      "Standardized mortality ratios (SMR) were calculated for all-cause, malignancy, and cardiovascular disease (CVD) mortality. Expected mortality was obtained from cause, sex, calendar year, and age-specific death rates from national death and population counts.",
+      "In the treatment group, 95 patients died compared to 74.6 expected [SMR 1.27 (95% confidence interval, 1.04-1.56)]. Mortality was higher in women than in men. After exclusion of high-risk patients, the SMR for CVD mortality remained increased in women. Mortality due to malignancies was not elevated. In the control groups mortality was not different from the background population. Univariate analyses demonstrated sex, GHD onset, age, and underlying diagnosis as influencing factors."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_43",
+    "question": "Can progression of valvar aortic stenosis be predicted accurately?",
+    "ground_truth": "Yes. The present data indicate that for clinical purposes and planning of valvar surgery the progression of asymptomatic aortic stenosis can be sufficiently predicted by the present aortic valve opening area and the degree of valvar calcification.",
+    "source_doc_id": "pubmed_12963175",
+    "reference_contexts": [
+      "It was the aim of the present study to elaborate criteria for the assessment of rapid hemodynamic progression of valvar aortic stenosis. These criteria are of special importance when cardiac surgery is indicated for other reasons but the established criteria for aortic valve replacement are not yet fulfilled. Such aspects of therapeutic planing were mostly disregarded in the past so that patients had to undergo cardiac reoperation within a few years.",
+      "Hemodynamic, echocardiographic, and clinical data of 169 men and 88 women with aortic stenosis, aged 55.2 +/- 15.7 years at their first and 63.4 +/- 15.6 years at their second cardiac catheterization, were analyzed.",
+      "The progression rate of aortic valve obstruction was found to be dependent on the degree of valvar calcification ([VC] scoring 0 to III) and to be exponentially correlated with the aortic valve opening area (AVA) at initial catheterization. Neither age nor sex of the patient nor etiology of the valvar obstruction significantly influence the progression of aortic stenosis. If AVA decreases below 0.75 cm(2) with a present degree of VC = 0, or AVA of 0.8 with VC of I, AVA of 0.9 with VC of II, or AVA of 1.0 with VC of III, it is probable that aortic stenosis will have to be operated upon in the following years."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_44",
+    "question": "Regional anesthesia as compared with general anesthesia for surgery in geriatric patients with hip fracture: does it decrease morbidity, mortality, and health care costs?",
+    "ground_truth": "No. There is no difference in postoperative morbidity, rates of rehospitalization, in-patient mortality or hospitalization costs in geriatric patients undergoing regional or general anesthesia for repair of hip fracture. Delay in surgery beyond 3 days and ICU admission both increase cost of hospitalization.",
+    "source_doc_id": "pubmed_22758782",
+    "reference_contexts": [
+      "Hip fracture in geriatric patients has a substantial economic impact and represents a major cause of morbidity and mortality in this population. At our institution, a regional anesthesia program was instituted for patients undergoing surgery for hip fracture. This retrospective cohort review examines the effects of regional anesthesia (from mainly after July 2007) vs general anesthesia (mainly prior to July 2007) on morbidity, mortality and hospitalization costs.",
+      "This retrospective cohort study involved data collection from electronic and paper charts of 308 patients who underwent surgery for hip fracture from September 2006 to December 2008. Data on postoperative morbidity, in-patient mortality, and cost of hospitalization (as estimated from data on hospital charges) were collected and analyzed. Seventy-three patients received regional anesthesia and 235 patients received general anesthesia. During July 2007, approximately halfway through the study period, a regional anesthesia and analgesia program was introduced.",
+      "The average cost of hospitalization in patients who received surgery for hip fracture was no different between patients who receive regional or general anesthesia ($16,789 + 631 vs $16,815 + 643, respectively, P = 0.9557). Delay in surgery and intensive care unit (ICU) admission resulted in significantly higher hospitalization costs. Age, male gender, African American race and ICU admission were associated with increased in-hospital mortality. In-hospital mortality and rates of readmission are not statistically different between the two anesthesia groups."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_45",
+    "question": "Does concomitant anterior/apical repair during midurethral sling improve the overactive bladder component of mixed incontinence?",
+    "ground_truth": "No. In women with bothersome MUI, concomitant AA repair does not result in additional improvement in OAB symptoms over MUS alone. Patients with postoperative complications exhibit less improvement in OAB symptoms.",
+    "source_doc_id": "pubmed_24809662",
+    "reference_contexts": [
+      "Midurethral sling (MUS) can improve overactive bladder (OAB) symptoms. It is unclear if anterior/apical prolapse (AA) repair provides additional benefit. We hypothesized that women with mixed urinary incontinence (MUI) experience greater improvement in the OAB component of their symptoms after concomitant MUS and AA repair compared with MUS alone.",
+      "This is a retrospective cohort study of women with bothersome MUI (defined by objective stress test and validated questionnaire) undergoing MUS alone (\"MUS-only\") or concomitant MUS and AA repair (\"MUS + AA\"). Our primary outcome was the Overactive Bladder Questionnaire Symptom Severity (OAB-q SS) change score 6 weeks after surgery.",
+      "Of 151 women, 67 (44 %) underwent MUS-only and 84 (56 %) underwent MUS + AA. The MUS-only cohort was younger and had less severe baseline prolapse (p < 0.05 for both). Postoperative complications (predominantly UTI) occurred in 35 (23 %) patients and were similar between cohorts. For all subjects mean OAB-q SS scores significantly improved postoperatively (p < 0.05). Our primary outcome, OAB-q SS change score, showed no significant differences between cohorts (30 ± 26 MUS-only vs 25 ± 25 MUS + AA, p = 0.20), indicating similar improvements in OAB symptoms. Multivariate linear regression analysis revealed no difference in OAB-q SS change score between cohorts; however, OAB-q SS change scores were lower for women with a postoperative complication (β = -19, 95 % CI -31 to -6; p < 0.01)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_46",
+    "question": "Does left atrial appendage (LAA) occlusion device alter the echocardiography and electrocardiogram parameters in patients with atrial fibrillation?",
+    "ground_truth": "Yes. LAA occlusion device resulted in a slightly movement in QRS axis, reduced HR and increased the mean-mean QT interval duration. In addition, LA diameter and ARD seemed to be larger after device implantation.",
+    "source_doc_id": "pubmed_27131771",
+    "reference_contexts": [
+      "The alterations of echocardiography and electrocardiogram (ECG) in patients received left atrial appendage LAA occlusion therapy are still unclear. The present study was to evaluate the influence of LAA occlusion device on echocardiography and ECG changes in patients with atrial fibrillation (AF).",
+      "Seventy-three patients who had undergone Watchman, LAmbre and Lefort were enrolled in this study. Echocardiography and ECG results at pre- and post-operation were collected. Besides, echocardiography was also performed during follow-up visits at 1, 6 and 12months after discharge.",
+      "After LAA occlusion, a slight and measureable movement of QRS electric axis was observed in most patients. The significant differences were also observed in heart rate (HR) and the mean-mean QT interval between pre- and post-operation for all patients. There existed no significant difference in echocardiographic parameters between before and after device implantation. However, a larger left atrial (LA) diameter was detected by echocardiography during follow-up visit at 6months when compared with pre-operation parameters. Similarly, aortic root diameter (ARD) was also larger during follow-up at 12months than the baseline dimension in pre-operation."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_47",
+    "question": "Is primary angioplasty an acceptable alternative to thrombolysis?",
+    "ground_truth": "Yes. Reorganization of care to offer a primary angioplasty service was acceptable to patients and their carers. Satisfaction levels were high regardless of the type of care received, with the exception of discharge and aftercare.",
+    "source_doc_id": "pubmed_20629769",
+    "reference_contexts": [
+      "The National Infarct Angioplasty Project assessed the feasibility of establishing a comprehensive primary angioplasty service. We aimed to compare satisfaction at intervention hospitals offering angioplasty-based care and control hospitals offering thrombolysis-based care.",
+      "Mixed methods, with postal survey of patients and their carers, supported by semi-structured interviews.",
+      "Survey of 682 patients and 486 carers, and interviews with 33 patients and carers, in eight English hospitals.",
+      "Primary angioplasty or thrombolysis.",
+      "Satisfaction with treatment.",
+      "Responses were received from 595/682 patients (87%) and 418/486 carers (86%). Satisfaction with overall care was high at both intervention and control sites (78% vs. 71% patients rated their care as 'excellent', P = 0.074). Patient satisfaction was higher at intervention sites for some aspects of care such as speed of treatment (80% vs. 67%'excellent', P = 0.001). Convenience of visiting was rated lower at intervention sites by carers (12% vs. 1%'poor', P = 0.001). During interviews, carers reported that they accepted the added inconvenience of visiting primary angioplasty sites in the context of this life-saving treatment. Patient satisfaction with discharge and aftercare was lower in both treatment groups than for other aspects of care."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  },
+  {
+    "id": "medical_48",
+    "question": "Clinician assessment for acute chest syndrome in febrile patients with sickle cell disease: is it accurate enough?",
+    "ground_truth": "No. ACS is common in patients with SCD who present with fever and was grossly underestimated by evaluating physicians. History and physical examination appear to be of little value in defining which febrile patients require CXR. In view of the mortality and morbidity associated with ACS, empiric CXR should be considered when evaluating a febrile patient with SCD.",
+    "source_doc_id": "pubmed_10381996",
+    "reference_contexts": [
+      "To determine whether the use of empiric chest radiography (CXR) is of significant value in detecting clinically unsuspected acute chest syndrome (ACS) in febrile patients with sickle cell disease (SCD).",
+      "Patients with SCD presenting to the emergency department and hematology clinic with temperature greater than or equal to 38 degrees C were prospectively evaluated using a physician-completed questionnaire. The questionnaire included inquiries into the patient's physical signs and symptoms and the physician's clinical impression for the presence of ACS. The questionnaire was completed before obtaining CXR results in all patients.",
+      "Seventy-three patients with SCD with 96 febrile events were evaluated over a 1-year period. Twenty-four percent (23/96) of the patients had CXR evidence of ACS. On the basis of the questionnaire data, 61% (14/23) of ACS cases were not clinically suspected by the evaluating physician before obtaining CXR. Comparing the patients with and without ACS revealed that, with the exception of splinting (4/23 [17%] versus 0/73 [0%]), no symptom or physical examination finding helped to identify which patients had ACS. Fifty-seven percent of patients with ACS had completely normal findings on physical examination. The presentation of patients with clinically detected versus clinically unsuspected ACS also did not differ significantly. Length of hospitalization, oxygen use, and need for transfusion were the same in both the unsuspected and detected ACS groups. Overall physician sensitivity for predicting ACS was only 39%, and diagnostic accuracy did not improve significantly with increasing levels of pediatric training."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_49",
+    "question": "Can you deliver accurate tidal volume by manual resuscitator?",
+    "ground_truth": "No. The tidal volume delivered by a manual resuscitator shows large variations. There were significant differences in the volume delivered by compression methods, but physical characteristics are not a predictor of tidal volume delivery. The manual resuscitator is not a suitable device for accurate ventilation.",
+    "source_doc_id": "pubmed_18843057",
+    "reference_contexts": [
+      "One of the problems with manual resuscitators is the difficulty in achieving accurate volume delivery. The volume delivered to the patient varies by the physical characteristics of the person and method. This study was designed to compare tidal volumes delivered by the squeezing method, physical characteristics and education and practice levels.",
+      "114 individuals trained in basic life support and bag-valve-mask ventilation participated in this study. Individual characteristics were obtained by the observer and the education and practice level were described by the subjects. Ventilation was delivered with a manual resuscitator connected to a microspirometer and volumes were measured. Subjects completed three procedures: one-handed, two-handed and two-handed half-compression.",
+      "The mean (standard deviation) volumes for the one-handed method were 592.84 ml (SD 117.39), two-handed 644.24 ml (SD 144.7) and two-handed half-compression 458.31 ml (SD 120.91) (p<0.01). Tidal volume delivered by two hands was significantly greater than that delivered by one hand (r = 0.398, p<0.01). The physical aspects including hand size, volume and grip power had no correlation with the volume delivered. There were slight increases in tidal volume with education and practice, but correlation was weak (r = 0.213, r = 0.281, r = 0.131, p<0.01)."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "no"
+    }
+  },
+  {
+    "id": "medical_50",
+    "question": "Recovery Outcome Measures: Is There a Place for Culture, Attitudes, and Faith?",
+    "ground_truth": "Yes. This paper discusses the cultural appropriateness of the RAQ in Australian settings, and identifies the need to develop rigorous, inclusive recovery outcome measures.",
+    "source_doc_id": "pubmed_24964725",
+    "reference_contexts": [
+      "Utilization of the Recovery Knowledge Inventory (RKI) and Recovery Attitudes Questionnaire (RAQ) in southeastern Australia raised questions about the RAQ, including links between attitudes, faith, and culture in supporting the recovery journey. These questions are particularly important when considered in the context of people with mental illness who live in secular multicultural societies."
+    ],
+    "metadata": {
+      "benchmark": "PubMedQA (pqa_labeled)",
+      "final_decision": "yes"
+    }
+  }
+]

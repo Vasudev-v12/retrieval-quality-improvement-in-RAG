@@ -1,0 +1,602 @@
+[
+  {
+    "id": "legal_01",
+    "question": "What incident led to the conviction and sentencing of Balwant Singh?",
+    "ground_truth": "Balwant Singh was convicted and sentenced to death for his involvement in a bomb blast on 31st August 1995, which resulted in the death of the then Chief Minister of Punjab, Shri Beant Singh, and 16 others, and injured several more.",
+    "source_doc_id": "sc_2023_4_265_279",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Balwant Singh vs. Union of India & Ors.",
+      "judgement_date": "3rd May 2023"
+    }
+  },
+  {
+    "id": "legal_02",
+    "question": "What was the main legal issue in the case of Lekh Raj vs Ranjit Singh?",
+    "ground_truth": "The main issue was whether the decree passed in 1965 regarding the agricultural land was executable despite objections raised by the judgment-debtors about its validity under the amended Punjab Custom (Power to Contest) Act, 1973.",
+    "source_doc_id": "sc_2017_7_542_550",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Lekh Raj (Dead) Through L.Rs. & Ors. vs Ranjit Singh & Ors.",
+      "judgement_date": "16th August 2017"
+    }
+  },
+  {
+    "id": "legal_03",
+    "question": "What was the sequence of events leading to the arrest of Rahul Modi and others in the case of Serious Fraud Investigation Office vs. Rahul Modi & Ors.?",
+    "ground_truth": "Rahul Modi and others were arrested on 10th December 2018, following approval by the Director of SFIO. They were released on interim bail by the High Court of Delhi but later surrendered and were remanded to judicial custody, which was extended multiple times.",
+    "source_doc_id": "sc_2022_1_597_608",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Serious Fraud Investigation Office vs. Rahul Modi & Ors.",
+      "judgement_date": "7th February 2022"
+    }
+  },
+  {
+    "id": "legal_04",
+    "question": "What was the primary issue in the case of Kalyani (Dead) Through LRs & Ors. vs. The Sulthan Bathery Municipality & Ors.?",
+    "ground_truth": "The primary issue was whether the appellants were entitled to compensation for their land, which was used for the construction/widening of the Sulthan Bathery Bypass Road without receiving any compensation.",
+    "source_doc_id": "sc_2022_5_849_862",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Kalyani (Dead) Through LRS. & Ors. vs. The Sulthan Bathery Municipality & Ors.",
+      "judgement_date": "26th April 2022"
+    }
+  },
+  {
+    "id": "legal_05",
+    "question": "What was the ruling of the High Court of Chhattisgarh in Radha Bai vs Ram Narayan & Ors.?",
+    "ground_truth": "The High Court allowed the appeal filed by the respondents, confirming the judgment and decree of the Trial Court, thereby rejecting Radha Bai's claim.",
+    "source_doc_id": "sc_2019_17_119_138",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Radha Bai vs Ram Narayan & Ors.",
+      "judgement_date": "22nd November 2019"
+    }
+  },
+  {
+    "id": "legal_06",
+    "question": "What was the final outcome of the appeal in the Supreme Court for Asfaq's parole application?",
+    "ground_truth": "The Supreme Court dismissed the appeal, upholding the rejection of Asfaq's parole application at this stage, but allowed for the possibility of reapplying for parole in the future when the external environment changes for the better and after a reasonable period of time has passed.",
+    "source_doc_id": "sc_2017_11_571_590",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Asfaq vs State of Rajasthan and Others",
+      "judgement_date": "11th September 2017"
+    }
+  },
+  {
+    "id": "legal_07",
+    "question": "What was the State's grievance in the case of State Rep. by the Inspector of Police vs. M. Murugesan & Anr.?",
+    "ground_truth": "The State was aggrieved by an order passed by the High Court of Judicature at Madras on 24th April 2019, which constituted a Heterogeneous Committee to give recommendations on reforms for the reformation, rehabilitation, and reintegration of the convict/accused person to society and best practices for improving the quality of investigation.",
+    "source_doc_id": "sc_2020_2_553_563",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "State Rep. by the Inspector of Police vs. M. Murugesan & Anr.",
+      "judgement_date": "15th January 2020"
+    }
+  },
+  {
+    "id": "legal_08",
+    "question": "What were the initial charges against Sonu Kushwaha?",
+    "ground_truth": "Sonu Kushwaha was charged under Sections 377 and 506 of the IPC and Section 5 read with Section 6 of the POCSO Act for allegedly committing aggravated penetrative sexual assault on a minor.",
+    "source_doc_id": "sc_2023_10_993_1000",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "State of U.P. vs Sonu Kushwaha",
+      "judgement_date": "5th July 2023"
+    }
+  },
+  {
+    "id": "legal_09",
+    "question": "What was the main issue in the Naveen Kaushik vs. Central Bureau of Investigation case?",
+    "ground_truth": "The main issue was whether the appeals and special leave petitions should be allowed to be withdrawn and whether the impugned order should be set aside and the matter remanded to the High Court for a fresh decision.",
+    "source_doc_id": "sc_2018_2_1108_1110",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Naveen Kaushik vs. Central Bureau of Investigation",
+      "judgement_date": "26th April 2018"
+    }
+  },
+  {
+    "id": "legal_10",
+    "question": "What was the Supreme Court's view on the punishment for road traffic offences under the IPC compared to the MV Act in the case 'The State of Arunachal Pradesh vs. Ramchandra Rabidas @ Ratan Rabidas & Anr.'?",
+    "ground_truth": "The Supreme Court stated that the punishment under the IPC for road traffic offences is stricter and more proportionate compared to the MV Act. For example, the maximum imprisonment under the IPC for certain offences can go up to 10 years, while under the MV Act, it is up to six months.",
+    "source_doc_id": "sc_2019_15_771_794",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "The State of Arunachal Pradesh vs. Ramchandra Rabidas @ Ratan Rabidas & Anr.",
+      "judgement_date": "4th October 2019"
+    }
+  },
+  {
+    "id": "legal_11",
+    "question": "Why were the respondents initially employed by the North Delhi Municipal Corporation?",
+    "ground_truth": "The respondents were initially employed to counter the outbreak of dengue and have been working since 1997-1998 on a contractual basis.",
+    "source_doc_id": "sc_2019_18_896_897",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "North Delhi Municipal Corporation Vs. Harleen Kaur & Ors.",
+      "judgement_date": "22nd November 2019"
+    }
+  },
+  {
+    "id": "legal_12",
+    "question": "What relief did the Supreme Court grant to Narendra Kumar?",
+    "ground_truth": "The Supreme Court quashed the impugned orders of the bank and the High Court, allowing Narendra Kumar's writ petition and directing the bank to grant him pensionary benefits along with interest and imposing costs of Rs. 25,000 on the bank.",
+    "source_doc_id": "sc_2019_9_1_9",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Narendra Kumar vs. Chairman and Managing Director, Syndicate Bank & Ors.",
+      "judgement_date": "30th April 2019"
+    }
+  },
+  {
+    "id": "legal_13",
+    "question": "What was the final outcome of the appeal in the case of Union of India & Ors. vs. Rajib Khan & Ors.?",
+    "ground_truth": "The final outcome was that the Supreme Court allowed the appeal by the Union of India, setting aside the High Court's decision, and ruled that Nursing Assistants in the BSF are not entitled to Nursing Allowance at par with Staff Nurses. The original writ petition claiming Nursing Allowance was dismissed.",
+    "source_doc_id": "sc_2023_1_1009_1014",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Union of India & Ors. vs. Rajib Khan & Ors.",
+      "judgement_date": "16th January 2023"
+    }
+  },
+  {
+    "id": "legal_14",
+    "question": "What were the allegations against Dr. S.B. Sinha and his family members?",
+    "ground_truth": "The allegations were that Dr. S.B. Sinha and his family members, including Ravi Sinha, were involved in a conspiracy defrauding the Government of Bihar (now Jharkhand) of several hundred crores through fraudulent transactions in the Animal Husbandry Department and other departments, leading to the attachment of their properties.",
+    "source_doc_id": "sc_2017_12_913_932",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Ravi Sinha & Ors. vs The State of Jharkhand",
+      "judgement_date": "5th October 2017"
+    }
+  },
+  {
+    "id": "legal_15",
+    "question": "What was the High Court's stance on the divorce granted by the trial court in the case of Sivasankaran vs. Santhimeenal?",
+    "ground_truth": "The High Court initially restored the decree of divorce granted by the trial court but later, upon a review petition, dissolved the marriage on the ground of irretrievable breakdown of marriage, also taking into account certain aspects of alleged cruelty.",
+    "source_doc_id": "sc_2021_6_169_186",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Sivasankaran vs. Santhimeenal",
+      "judgement_date": "13th September 2021"
+    }
+  },
+  {
+    "id": "legal_16",
+    "question": "What was the primary legal issue in the case of M/S SCG Contracts India Pvt. Ltd. vs K.S. Chamankar Infrastructure Pvt. Ltd. & Ors.?",
+    "ground_truth": "The primary legal issue was whether the written statement filed by the defendant could be taken on record after the lapse of the mandatory 120-day period stipulated by the Code of Civil Procedure as amended by the Commercial Courts Act, 2015.",
+    "source_doc_id": "sc_2019_3_1050_1059",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "M/S SCG Contracts India Pvt. Ltd. vs K.S. Chamankar Infrastructure Pvt. Ltd. & Ors.",
+      "judgement_date": "12th February 2019"
+    }
+  },
+  {
+    "id": "legal_17",
+    "question": "What relief did Navika Kumar seek in her petition to the Supreme Court?",
+    "ground_truth": "Navika Kumar sought the quashing of the multiple FIRs and complaints or alternatively, the transfer and clubbing of all FIRs and complaints to the IFSO unit of Delhi Police for a consolidated investigation.",
+    "source_doc_id": "sc_2022_16_182_187",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Navika Kumar vs. Union of India and Others",
+      "judgement_date": "23rd September 2022"
+    }
+  },
+  {
+    "id": "legal_18",
+    "question": "What is the main issue raised by Anushka Rengunthwar and other petitioners in this case?",
+    "ground_truth": "The main issue raised by the petitioners is the restriction imposed by the notification dated 4th March 2021, which limits Overseas Citizens of India (OCI) cardholders to compete only for seats reserved for Non-Resident Indians (NRIs) and supernumerary seats in medical entrance exams like NEET-UG, rather than competing with Indian citizens for all seats.",
+    "source_doc_id": "sc_2023_5_243_300",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Anushka Rengunthwar & Ors. vs Union of India & Ors.",
+      "judgement_date": "3rd February 2023"
+    }
+  },
+  {
+    "id": "legal_19",
+    "question": "How did the High Court rule on the appeal filed by the Thamarasseri Roman Catholic Diocese?",
+    "ground_truth": "The High Court reversed the trial court's decision, holding that the failure of Mrs. Umadevi Nambiar to seek the relief of setting aside the documents of transfer and/or recovery of possession of the property was fatal to her case.",
+    "source_doc_id": "sc_2022_5_579_589",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Mrs. Umadevi Nambiar vs. Thamarasseri Roman Catholic Diocese",
+      "judgement_date": "1st April 2022"
+    }
+  },
+  {
+    "id": "legal_20",
+    "question": "What was the final decision of the Supreme Court regarding the appeals filed by the bank officers' associations and staff unions?",
+    "ground_truth": "The Supreme Court dismissed the appeals, upheld the High Courts' judgements, and validated the provisions of Section 17(2)(viii) of the Income Tax Act and Rule 3(7)(i) of the Income Tax Rules.",
+    "source_doc_id": "sc_2024_5_906_926",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "All India Bank Officers' Confederation vs. The Regional Manager, Central Bank of India, and Others",
+      "judgement_date": "7th May 2024"
+    }
+  },
+  {
+    "id": "legal_21",
+    "question": "What was the primary issue in the case of Dr. NTR University of Health Sciences vs. Dr. Yerra Trinadh & Others?",
+    "ground_truth": "The primary issue was whether the High Court was justified in ordering the re-evaluation of answer scripts in absence of any provision for re-evaluation in the relevant rules.",
+    "source_doc_id": "sc_2022_10_77_86",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Dr. NTR University of Health Sciences vs. Dr. Yerra Trinadh & Others",
+      "judgement_date": "4th November 2022"
+    }
+  },
+  {
+    "id": "legal_22",
+    "question": "What was the Supreme Court's conclusion regarding Devidas Loka Rathod's mental state at the time of the incident?",
+    "ground_truth": "The Supreme Court concluded that there was sufficient doubt regarding Devidas Loka Rathod's mental state at the time of the incident, entitling him to the benefit of the doubt and consequent acquittal under Section 84 IPC.",
+    "source_doc_id": "sc_2018_7_767_780",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Devidas Loka Rathod vs. State of Maharashtra",
+      "judgement_date": "2nd July 2018"
+    }
+  },
+  {
+    "id": "legal_23",
+    "question": "What were the standby charges initially agreed upon between Tata Power Company Ltd. and Maharashtra State Electricity Board?",
+    "ground_truth": "The standby charges initially agreed upon were for a monthly firmed demand of 300 MVA, increasing by 50 MVA each year starting from 1st April 1985, to cover Tata Power Company's load growth annually.",
+    "source_doc_id": "sc_2019_6_845_871",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Tata Power Company Ltd. vs. Adani Electricity Mumbai Ltd. & Ors.",
+      "judgement_date": "2nd May 2019"
+    }
+  },
+  {
+    "id": "legal_24",
+    "question": "What was the decision of the Rent Controlling Court regarding the eviction petition filed by Hameed Kunju?",
+    "ground_truth": "The Rent Controlling Court passed an ex parte eviction order against Nazim on 21st August 2007 due to his absence during the hearings and accepted the eviction petition on merits.",
+    "source_doc_id": "sc_2017_6_375_388",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Hameed Kunju vs. Nazim",
+      "judgement_date": "17th July 2017"
+    }
+  },
+  {
+    "id": "legal_25",
+    "question": "Which court issued the judgment in the case Vinodchandra Sakarlal Kapadia vs. State of Gujarat and Ors.?",
+    "ground_truth": "The judgment was issued by the Supreme Court of India.",
+    "source_doc_id": "sc_2020_5_897_1000",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Vinodchandra Sakarlal Kapadia vs. State of Gujarat and Ors.",
+      "judgement_date": "15th June 2020"
+    }
+  },
+  {
+    "id": "legal_26",
+    "question": "What is the primary legal issue in the case Ashok G. Rajani vs. Beacon Trusteeship Ltd. & Ors.?",
+    "ground_truth": "The primary legal issue is whether the National Company Law Appellate Tribunal (NCLAT) was correct in not restraining the Interim Resolution Professional (IRP) from proceeding with the Corporate Insolvency Resolution Process (CIRP) of M/s Seya Industries Limited, despite the settlement reached between the parties.",
+    "source_doc_id": "sc_2022_18_133_142",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Ashok G. Rajani vs. Beacon Trusteeship Ltd. & Ors.",
+      "judgement_date": "22nd September 2022"
+    }
+  },
+  {
+    "id": "legal_27",
+    "question": "What was the reason for the appeal filed by Ramvir in the High Court of Allahabad?",
+    "ground_truth": "Ramvir filed an appeal in the High Court of Allahabad against his conviction under Section 302 IPC by the Sessions Judge.",
+    "source_doc_id": "sc_2018_13_547_553",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Ramvir vs. State of Uttar Pradesh",
+      "judgement_date": "26th October 2018"
+    }
+  },
+  {
+    "id": "legal_28",
+    "question": "What was the primary legal issue in the case of M/s. National Highways and Infrastructure Development Corporation Ltd. vs M/s. BSCPL Infrastructure Ltd.?",
+    "ground_truth": "The case addressed whether an arbitration clause becomes enforceable upon acceptance of the Letter of Award (LOA) or only upon the signing of the final contract agreement.",
+    "source_doc_id": "sc_2019_10_636_646",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "M/s. National Highways and Infrastructure Development Corporation Ltd. vs M/s. BSCPL Infrastructure Ltd.",
+      "judgement_date": "7th August 2019"
+    }
+  },
+  {
+    "id": "legal_29",
+    "question": "What was the Supreme Court's final decision in the case Mukesh Kumar & Anr. vs. The Union of India & Ors.?",
+    "ground_truth": "The Supreme Court allowed the appeal, set aside the High Court's order, and directed the authorities to consider Mukesh Kumar's application for compassionate appointment as per the extant policy, within three months.",
+    "source_doc_id": "sc_2022_1_644_652",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Mukesh Kumar & Anr. vs. The Union of India & Ors.",
+      "judgement_date": "24th February 2022"
+    }
+  },
+  {
+    "id": "legal_30",
+    "question": "What was the main issue raised by the Attorney General regarding the maintainability of the review petition in the Yashwant Sinha & Ors. vs. Central Bureau of Investigation case?",
+    "ground_truth": "The main issue raised by the Attorney General was the maintainability of the review petition due to the alleged unauthorized removal and use of three documents from the Ministry of Defence by the petitioners, which were in violation of the Official Secrets Act, 1923.",
+    "source_doc_id": "sc_2019_5_638_678",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Yashwant Sinha & Ors. vs. Central Bureau of Investigation",
+      "judgement_date": "10th April 2019"
+    }
+  },
+  {
+    "id": "legal_31",
+    "question": "What prediction did the Supreme Court make regarding the quality of medical education due to online clinical training?",
+    "ground_truth": "The Court highlighted that allowing provisional registration without actual clinical training would compromise the quality of medical education and healthcare standards in the country.",
+    "source_doc_id": "sc_2022_17_344_359",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "The National Medical Commission vs. Pooja Thandu Naresh & Ors.",
+      "judgement_date": "29th April 2022"
+    }
+  },
+  {
+    "id": "legal_32",
+    "question": "Why was Chaitra Nagammanavar's appointment as an Assistant Professor challenged?",
+    "ground_truth": "Her appointment was challenged because she was selected based on merit, whereas another candidate, Respondent No. 7, who was within the preferred age bracket of 29-40 years as per the 2001 Rules, was not selected.",
+    "source_doc_id": "sc_2024_6_471_483",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Chaitra Nagammanavar vs. State of Karnataka & Ors.",
+      "judgement_date": "2nd May 2024"
+    }
+  },
+  {
+    "id": "legal_33",
+    "question": "What were the facts leading to the criminal appeals in the case of Prahlad vs. State of Madhya Pradesh & Anr.?",
+    "ground_truth": "On 22nd June 1991, Ramesh was attacked by a gunshot and died on his way to Indore for treatment. The prosecution alleged that the accused had political enmity with Ramesh and conspired to murder him using a motorcycle and a Katta (country-made pistol).",
+    "source_doc_id": "sc_2022_16_82_98",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Prahlad vs. State of Madhya Pradesh & Anr.",
+      "judgement_date": "27th July 2022"
+    }
+  },
+  {
+    "id": "legal_34",
+    "question": "What was the main legal issue in the case of Sunil Todi & Ors. vs. State of Gujarat & Anr.?",
+    "ground_truth": "The main legal issue was whether the cheques issued by the appellants were for a legally enforceable debt or liability under Section 138 of the Negotiable Instruments Act, 1881, given that the cheques were allegedly issued as security.",
+    "source_doc_id": "sc_2021_9_1086_1122",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Sunil Todi & Ors. vs. State of Gujarat & Anr.",
+      "judgement_date": "3rd December 2021"
+    }
+  },
+  {
+    "id": "legal_35",
+    "question": "What was the product manufactured by M/s Thermax Ltd. and how was it described?",
+    "ground_truth": "M/s Thermax Ltd. manufactured Modified Vapour Absorption Chillers (MVAC) and described them as heat pumps, which were capable of providing both chilled and hot water as output.",
+    "source_doc_id": "sc_2022_16_165_181",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "M/s Thermax Ltd. vs. Commissioner of Central Excise, Pune-1",
+      "judgement_date": "13th October 2022"
+    }
+  },
+  {
+    "id": "legal_36",
+    "question": "What was the outcome of the appeal filed by Snehadeep Structures Pvt. Limited?",
+    "ground_truth": "The appeal filed by Snehadeep Structures Pvt. Limited was dismissed by the Supreme Court, which upheld the Division Bench's decision to set aside the arbitral award, noting that the determination of the appointed date and calculation of interest required further examination.",
+    "source_doc_id": "sc_2024_3_454_461",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Snehadeep Structures Pvt. Limited vs. Maharashtra Small Scale Industries Development Corporation Ltd.",
+      "judgement_date": "5th March 2024"
+    }
+  },
+  {
+    "id": "legal_37",
+    "question": "How did the Gujarat High Court's view differ from that of the Kerala High Court?",
+    "ground_truth": "The Gujarat High Court quashed the notices issued to NBFCs under the Bombay Money Lenders Act, holding that NBFCs registered under the RBI Act were not subject to state money lending laws and were regulated exclusively by the RBI.",
+    "source_doc_id": "sc_2022_7_1005_1047",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Nedumpilli Finance Company Limited vs. State of Kerala & Ors.",
+      "judgement_date": "10th May 2022"
+    }
+  },
+  {
+    "id": "legal_38",
+    "question": "What was the primary legal issue in the case of Avishek Raja & Ors. vs Sanjay Gupta?",
+    "ground_truth": "The primary issue was the non-implementation of the Majithia Wage Board Award by various newspaper establishments and whether this constituted contempt of court.",
+    "source_doc_id": "sc_2017_6_1028_1054",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Avishek Raja & Ors. vs Sanjay Gupta",
+      "judgement_date": "19th June 2017"
+    }
+  },
+  {
+    "id": "legal_39",
+    "question": "What was the main issue in the case of Raj Kumar Bhatia vs Subhash Chander Bhatia decided on 15th December 2017?",
+    "ground_truth": "The main issue was whether the appellant, Raj Kumar Bhatia, could amend his written statement in a suit for recovery of possession, arrears of damages, and mesne profits filed by Sharda Rani Bhatia, the mother of both parties.",
+    "source_doc_id": "sc_2017_12_531_539",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Raj Kumar Bhatia vs Subhash Chander Bhatia",
+      "judgement_date": "15th December 2017"
+    }
+  },
+  {
+    "id": "legal_40",
+    "question": "What did the Supreme Court of India decide regarding the appeal filed by Parakh Vanijya Private Limited?",
+    "ground_truth": "The Supreme Court of India dismissed the appeal, agreeing with the High Court's decision that the respondents could use 'MALABAR' in conjunction with 'BAROMA' and noting that there was no exclusive right to the word 'MALABAR' due to the disclaimer in the trademark registration.",
+    "source_doc_id": "sc_2018_6_967_971",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Parakh Vanijya Private Limited vs. Baroma Agro Product and Others",
+      "judgement_date": "12th July 2018"
+    }
+  },
+  {
+    "id": "legal_41",
+    "question": "What were the circumstances that led to the altercation in the 'Ranvir Singh vs. The State of Madhya Pradesh' case?",
+    "ground_truth": "The altercation arose from a long-standing enmity over a water dispute, which escalated when the deceased, Hukum Singh, and others were attacked by the accused with weapons, including truncheons and axes, on 25th July 1992.",
+    "source_doc_id": "sc_2023_1_841_864",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Ranvir Singh vs. The State of Madhya Pradesh",
+      "judgement_date": "12th January 2023"
+    }
+  },
+  {
+    "id": "legal_42",
+    "question": "What was the main issue in the case of M/s Peacock Industries Ltd. vs. Union of India and Ors.?",
+    "ground_truth": "The main issue was whether M/s Peacock Industries Ltd. was entitled to a refund of the excise duty for goods returned by its distributors under Section 173-L of the Central Excise Act, based on the value of the returned goods.",
+    "source_doc_id": "sc_2022_11_220_226",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "M/s Peacock Industries Ltd. vs. Union of India and Ors.",
+      "judgement_date": "5th September 2022"
+    }
+  },
+  {
+    "id": "legal_43",
+    "question": "What was the role of circumstantial evidence in the conviction of Surajdeo Mahto and Prakash Mahto?",
+    "ground_truth": "The conviction relied heavily on circumstantial evidence, including the last seen theory and the testimonies of various witnesses who corroborated the prosecution's case.",
+    "source_doc_id": "sc_2021_8_911_937",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Surajdeo Mahto and Anr. vs The State of Bihar",
+      "judgement_date": "4th August 2021"
+    }
+  },
+  {
+    "id": "legal_44",
+    "question": "What are the broader implications of this judgment for other oil marketing companies?",
+    "ground_truth": "The broader implications include potential reassessment of tax liabilities for other oil marketing companies operating under similar circumstances, ensuring compliance with the clarified interpretation of the Entry Tax Act and VAT set-offs.",
+    "source_doc_id": "sc_2017_13_477_507",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Indian Oil Corporation Limited vs State of Bihar & Anr.",
+      "judgement_date": "14th November 2017"
+    }
+  },
+  {
+    "id": "legal_45",
+    "question": "Why did the appellants seek condonation of delay in filing their first appeals in the case of Mohar Singh (Dead) through LRS. & Ors. vs. State of Uttar Pradesh Collector & Ors.?",
+    "ground_truth": "The appellants sought condonation of delay due to illiteracy, poverty, inability to arrange court fees, and advice to file appeals in September 2011.",
+    "source_doc_id": "sc_2023_14_842_848",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Mohar Singh (Dead) through LRS. & Ors. vs. State of Uttar Pradesh Collector & Ors.",
+      "judgement_date": "7th November 2023"
+    }
+  },
+  {
+    "id": "legal_46",
+    "question": "What was the primary legal issue in the case of The State of Jammu and Kashmir vs. Farid Ahmad Tak?",
+    "ground_truth": "The primary legal issue was whether the compulsory retirement of Farid Ahmad Tak, based on his alleged involvement in corrupt practices and the subsequent FIR registered against him, was justified and in accordance with the law.",
+    "source_doc_id": "sc_2019_7_1_11",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "The State of Jammu and Kashmir vs. Farid Ahmad Tak",
+      "judgement_date": "2nd May 2019"
+    }
+  },
+  {
+    "id": "legal_47",
+    "question": "What procedural steps did the Food Inspector take after finding the misbranded food in the case of Manik Hiru Jhangiani vs State of M.P.?",
+    "ground_truth": "The Food Inspector purchased the biscuit packets, drew a panchnama the next day, and sent samples to the State Food Laboratory, Bhopal, for analysis and testing.",
+    "source_doc_id": "sc_2023_16_551_561",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Manik Hiru Jhangiani vs State of M.P.",
+      "judgement_date": "14th December 2023"
+    }
+  },
+  {
+    "id": "legal_48",
+    "question": "What is the case Commissioner of Central Excise, Haldia vs. M/s. Krishna Wax (P) Ltd. about?",
+    "ground_truth": "The case involves the Commissioner of Central Excise, Haldia accusing M/s. Krishna Wax (P) Ltd. of manufacturing and clearing products like Foots Oil, Pressed Wax, and Pressed Paraffin Wax without paying excise duty, and the subsequent legal dispute over whether these activities constituted 'manufacture' under the Central Excise Act, 1944.",
+    "source_doc_id": "sc_2019_14_579_598",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Commissioner of Central Excise, Haldia vs. M/s. Krishna Wax (P) Ltd.",
+      "judgement_date": "14th November 2019"
+    }
+  },
+  {
+    "id": "legal_49",
+    "question": "What were the charges against Bhisham Lal Verma in this case?",
+    "ground_truth": "Bhisham Lal Verma was charged with offences under Sections 409, 420, 467, 468, 471, and 120B of the IPC, and Sections 7 and 13 of the Prevention of Corruption Act, 1988, related to irregularities in the construction of toilets under the Integrated Low-Cost Sanitation Scheme and embezzlement of public funds.",
+    "source_doc_id": "sc_2023_14_55_61",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Bhisham Lal Verma vs. State of Uttar Pradesh & Anr.",
+      "judgement_date": "30th October 2023"
+    }
+  },
+  {
+    "id": "legal_50",
+    "question": "How did the High Court of Uttarakhand at Nainital rule on the writ petition filed by Mohd. Inam?",
+    "ground_truth": "The High Court of Uttarakhand allowed the writ petition filed by the landlords, upholding the declaration of vacancy and the order of possession in favor of the landlords.",
+    "source_doc_id": "sc_2020_7_64_88",
+    "reference_contexts": null,
+    "metadata": {
+      "benchmark": "IndicLegalQA",
+      "case_name": "Mohd. Inam vs. Sanjay Kumar Singhal & Ors.",
+      "judgement_date": "26th June 2020"
+    }
+  }
+]

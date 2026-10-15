@@ -16,14 +16,15 @@ from langsmith import Client
 from langsmith.utils import LangSmithNotFoundError
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-import query_gen
-from llm import OpenaiRAG
-from hybridRag import ChromaHybridRag
+import file.rag_optimizer.query_gen as query_gen
+from file.rag_optimizer.llm import OpenaiRAG
+from file.rag_optimizer.hybridRag import ChromaHybridRag
+from file.rag_optimizer.memory_reservoir import build_reservoir
 
 load_dotenv()
 openai_api_key = os.environ["OPENAI_API_KEY"]
 langsmith_api_key = os.environ["LANGSMITH_API_KEY"]
-
+memory = build_reservoir(db_path="./chroma_db")
 faithfulness_prompt = PromptTemplate(
     input_variables=["input", "prediction", "criteria"],
     template="""
@@ -48,6 +49,15 @@ The final output MUST contain a double-bracketed integer
 from [[1]] to [[10]]. Do not use "Score: 9" instead.
 """
 )
+
+judge_llm = ChatOpenAI(
+    model="gpt-4.1-mini",
+    api_key=openai_api_key,
+    temperature=0,
+)
+
+top_k = 5
+threshold = 1
 
 DATASET_NAME = "nabl-112a-rag-evaluation-30"
 DATASET_FILE = Path(__file__).with_name(
@@ -176,45 +186,43 @@ def upload_dataset(client: Client, rows: list[dict[str, Any]],) -> None:
 
     print(f"Uploaded {len(examples)} examples.")
 
-# Returns preset RAG retriever and llm model objects
-def get_pipeline() -> tuple[ChromaHybridRag, OpenaiRAG]:
-    global RETRIEVER, RAG
-
-    if RETRIEVER is None:
-        RETRIEVER = ChromaHybridRag(
-            db_path="./chroma_db",
-            collection_name="documents",
-        )
-
-    if RAG is None:
-        #RAG = GeminiRAG(os.environ["GOOGLE_API_KEY"])
-        RAG = OpenaiRAG(openai_api_key)
-
-    return RETRIEVER, RAG
-
 # Retrieves relevant chunks and generate answers with llm
 def rag_target(inputs: dict[str, Any]) -> dict[str, Any]:
     """Run the production retrieval and generation pipeline."""
 
+    # answer = ""
+    # contexts = []
     question = str(inputs["question"])
-    rag_retriever, llm_model = get_pipeline()
-    f_t, max_tokens = query_gen.filter_tokens(question)
-    queries = query_gen.generate_queries(
-        question=f_t,
-        max_l=max_tokens,
+    # result = {"question": question}
+    # memory.distance_threshold = threshold
+    # cached = memory.retrieve(question, top_k=top_k)
+    # best = cached[0] if cached else None
+    # cache_hit = bool(best and best["is_relevant"])
+    # result["cache_candidates"] = cached
+    # result["best_memory"] = best
+    # result["cache_hit"] = cache_hit
+    # if cache_hit:
+    #     result["source"] = "memory"
+    #     result["answer"] = best["content"]
+    #     result["stats_after"] = memory.statistics()
+    #     answer = result["answer"]
+
+    rag_retriever = ChromaHybridRag(
+        db_path="./chroma_db",
+        collection_name="documents",
     )
+    llm_model = OpenaiRAG(openai_api_key)
+    queries = [entry["query"] for entry in query_gen.build_queries(question)["queries"]]
     documents = rag_retriever.retrieve_multiple(
         queries,
-        top_k=5,
+        top_k=top_k,
     )
     contexts = [
-        str(document["content"])
-        for document in documents
-        if document.get("content") is not None
+        str(document["content"]) for document in documents if document.get("content") is not None
     ]
-    answer = llm_model.answer(question, documents)
+    answer = str(llm_model.answer(question, documents))
     return {
-        "answer": str(answer),
+        "answer": answer,
         "contexts": contexts,
     }
 
@@ -229,19 +237,11 @@ def get_judges() -> dict[str, Any]:
             "answer_relevancy": ANSWER_RELEVANCY_CRITERIA,
         }
 
-        judge_llm = ChatOpenAI(
-            model="gpt-4.1-mini",
-            api_key=openai_api_key,
-            temperature=0,
-        )
-
         JUDGES = {}
 
         for name, description in criteria.items():
             evaluator_type = (
-                "labeled_score_string"
-                if name == "context_recall"
-                else "score_string"
+                "labeled_score_string" if name == "context_recall" else "score_string"
             )
 
             JUDGES[name] = load_evaluator(
@@ -251,7 +251,6 @@ def get_judges() -> dict[str, Any]:
             )
 
     return JUDGES
-
 
 def score_out_of_ten(judge, input_text: str, prediction: str, reference: str = "") -> float:
     kwargs = {

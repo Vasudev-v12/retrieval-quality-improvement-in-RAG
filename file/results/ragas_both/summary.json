@@ -1,0 +1,38 @@
+[
+  {
+    "domain": "legal",
+    "questions": 50,
+    "context_precision": 0.5407,
+    "context_precision_failed": 29,
+    "context_recall": 0.84,
+    "faithfulness": 0.9921,
+    "answer_relevancy": 0.8457,
+    "answer_correctness": 0.4405,
+    "gold_doc_hit_rate": 0.96,
+    "gold_chunk_share": 0.5253
+  },
+  {
+    "domain": "medical",
+    "questions": 50,
+    "context_precision": 0.8586,
+    "context_precision_failed": 6,
+    "context_recall": 0.6487,
+    "faithfulness": 0.9707,
+    "answer_relevancy": 0.7862,
+    "answer_correctness": 0.4275,
+    "gold_doc_hit_rate": 1.0,
+    "gold_chunk_share": 0.1629
+  },
+  {
+    "domain": "laboratory",
+    "questions": 50,
+    "context_precision": 0.4186,
+    "context_precision_failed": 20,
+    "context_recall": 0.58,
+    "faithfulness": 0.7718,
+    "answer_relevancy": 0.7998,
+    "answer_correctness": 0.3738,
+    "gold_doc_hit_rate": 0.96,
+    "gold_chunk_share": 0.6181
+  }
+]

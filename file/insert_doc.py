@@ -49,7 +49,7 @@ As Ferrari's flagship model during the 1980s, the car made numerous appearances 
 """
 
 
-from hybridRag import ChromaHybridRag
+from file.rag_optimizer.hybridRag import ChromaHybridRag
 
 #emp_data = record_gen.make_record()
 inserter = ChromaHybridRag()

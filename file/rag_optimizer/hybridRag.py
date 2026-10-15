@@ -1,9 +1,20 @@
+import hashlib
 import os
 import uuid
 import chromadb
-import record_gen
 from pypdf import PdfReader
 from rank_bm25 import BM25Okapi
+
+
+def compute_corpus_version(collection) -> str:
+    """Hash of a collection's id list; changes on any insert/upsert/delete.
+
+    The memory reservoir stores this with every cached answer, so a cached
+    answer stops being served once the `documents` collection changes.
+    """
+    all_ids = sorted(collection.get(include=[])["ids"])
+    return hashlib.sha256("".join(all_ids).encode("utf-8")).hexdigest()
+
 
 class ChromaInserter:
     def __init__(self, db_path="./chroma_db", collection_name="documents"):
