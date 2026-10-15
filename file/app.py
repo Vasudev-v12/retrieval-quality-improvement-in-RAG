@@ -7,8 +7,10 @@ step by step, so the mechanics of the pipeline are visible rather than
 hidden behind a single "answer" box.
 """
 
+import json
 import os
 import time
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -216,14 +218,38 @@ SAMPLE_QUESTIONS = {
     ),
 }
 
+# Each knowledge base is a separate ChromaDB collection. The benchmark
+# corpora are indexed into bench_<domain> by ragas_eval.py, so benchmark
+# questions only find their answers when that collection is searched.
+KNOWLEDGE_BASES = {
+    "Uploaded documents": "documents",
+    "Benchmark — legal": "bench_legal",
+    "Benchmark — medical": "bench_medical",
+    "Benchmark — laboratory": "bench_laboratory",
+}
+BENCH_DIR = Path(__file__).with_name("benchmarks") / "data"
+
+
+@st.cache_data(show_spinner=False)
+def load_sample_questions(collection_name):
+    """Sample questions for a knowledge base: the benchmark's own questions
+    for a bench_<domain> collection, the built-in samples otherwise."""
+    if not collection_name.startswith("bench_"):
+        return SAMPLE_QUESTIONS
+    path = BENCH_DIR / collection_name.removeprefix("bench_") / "questions.json"
+    if not path.exists():
+        return {}
+    rows = json.loads(path.read_text(encoding="utf-8"))
+    return {f"{row['id']} — {row['question'][:70]}": row["question"] for row in rows}
+
 
 # --------------------------------------------------------------------------
 # Cached resources — one instance per server process, reused across runs
 # so state (like memory-cache stats) persists as you interact with the app.
 # --------------------------------------------------------------------------
 @st.cache_resource(show_spinner=False)
-def get_retriever():
-    return ChromaHybridRag(db_path="./chroma_db", collection_name="documents")
+def get_retriever(collection_name="documents"):
+    return ChromaHybridRag(db_path="./chroma_db", collection_name=collection_name)
 
 
 @st.cache_resource(show_spinner=False)
@@ -239,14 +265,14 @@ def get_memory():
 
 
 def run_pipeline(question, top_k, threshold, force_regenerate, expansion_mode="both",
-                 centroid_k=3, window=1):
+                 centroid_k=3, window=1, collection_name="documents"):
     """Execute the real pipeline and collect what each stage produced."""
-    result = {"question": question}
+    result = {"question": question, "collection": collection_name}
 
     memory = get_memory()
     memory.distance_threshold = threshold
 
-    retriever = get_retriever()
+    retriever = get_retriever(collection_name)
     # Cached answers are only valid against the corpus they were generated from.
     corpus_version = compute_corpus_version(retriever.collection)
 
@@ -312,6 +338,14 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("### Configuration")
+    kb_label = st.selectbox(
+        "Knowledge base (collection searched)", list(KNOWLEDGE_BASES),
+        help="Benchmark questions must be asked against their own benchmark "
+             "collection — the uploaded-documents collection does not contain them.",
+    )
+    collection_name = KNOWLEDGE_BASES[kb_label]
+    chunk_count = get_retriever(collection_name).collection.count()
+    st.caption(f"`{collection_name}` · {chunk_count:,} chunks")
     top_k = st.slider("Documents per query (top_k)", 1, 10, 5)
     threshold = st.slider(
         "Memory relevance threshold (max distance)", 0.0, 2.0, 1.0, 0.05,
@@ -408,18 +442,30 @@ if missing_keys:
         unsafe_allow_html=True,
     )
 
+if chunk_count == 0:
+    st.markdown(
+        f'<div class="step-card" style="border-color:#f59e0b;">'
+        f"The <b>{collection_name}</b> collection is empty, so retrieval will find nothing. "
+        f"Benchmark collections are built by <code>python ragas_eval.py</code>; uploaded "
+        f"documents by <code>insert_doc.py</code>.</div>",
+        unsafe_allow_html=True,
+    )
+
+samples = load_sample_questions(collection_name)
+sample_key = f"sample_choice_{collection_name}"
+
 if "question_input" not in st.session_state:
-    st.session_state["question_input"] = list(SAMPLE_QUESTIONS.values())[0]
+    st.session_state["question_input"] = next(iter(samples.values()), "")
 
 def _apply_sample():
-    choice = st.session_state["sample_choice"]
+    choice = st.session_state[sample_key]
     if choice != "Custom question":
-        st.session_state["question_input"] = SAMPLE_QUESTIONS[choice]
+        st.session_state["question_input"] = samples[choice]
 
 st.selectbox(
     "Sample question",
-    list(SAMPLE_QUESTIONS) + ["Custom question"],
-    key="sample_choice",
+    list(samples) + ["Custom question"],
+    key=sample_key,
     on_change=_apply_sample,
 )
 st.text_area("Question sent to the pipeline", key="question_input", height=80)
@@ -434,7 +480,8 @@ if run_clicked:
         try:
             with st.spinner("Running pipeline..."):
                 st.session_state["result"] = run_pipeline(
-                    question, top_k, threshold, force_regenerate, expansion_mode, centroid_k, window
+                    question, top_k, threshold, force_regenerate, expansion_mode, centroid_k, window,
+                    collection_name,
                 )
         except Exception as e:
             st.session_state["result"] = None
