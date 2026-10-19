@@ -36,6 +36,7 @@ import argparse
 import json
 import os
 import warnings
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -69,6 +70,7 @@ RESULTS_DIR = Path(__file__).with_name("results") / "ragas"
 DB_PATH = "./chroma_db"
 
 TOP_K = 5
+MAX_CONTEXT_CHUNKS = 10  # chunks sent to the answering LLM and to Ragas
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 
@@ -109,23 +111,26 @@ def build_index(domain: str, corpus: list[dict[str, Any]], rebuild: bool) -> Chr
     return retriever
 
 
-def run_pipeline(question: str, retriever: ChromaHybridRag, rag: OpenaiRAG,
-                 expansion: str) -> dict[str, Any]:
-    """Keyword queries -> hybrid retrieval -> second-pass expansion -> answer."""
+def run_pipeline(question: str, retriever: ChromaHybridRag,
+                 expansion: str) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Keyword queries -> hybrid retrieval -> second-pass expansion.
+
+    Returns the logged outputs and the documents to answer from; the answer
+    itself is generated separately so LLM calls can run in parallel.
+    """
     queries = [entry["query"] for entry in query_gen.build_queries(question)["queries"]]
     documents = retriever.retrieve_multiple(queries, top_k=TOP_K)
-    documents = ContextExpander(retriever).expand(documents, mode=expansion)
+    documents = ContextExpander(retriever, max_chunks=MAX_CONTEXT_CHUNKS).expand(documents, mode=expansion)
     return {
         "queries": queries,
         "retrieved_ids": [doc["id"] for doc in documents],
         "expansion_sources": [doc["expansion"] for doc in documents],
         "contexts": [str(doc["content"]) for doc in documents if doc.get("content") is not None],
-        "answer": str(rag.answer(question, documents)),
-    }
+    }, documents
 
 
-def run_baseline(question: str, retriever: ChromaHybridRag, rag: OpenaiRAG) -> dict[str, Any]:
-    """Naive RAG: one dense similarity search with the raw question -> answer."""
+def run_baseline(question: str, retriever: ChromaHybridRag) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Naive RAG: one dense similarity search with the raw question."""
     results = retriever.collection.query(
         query_texts=[question],
         n_results=TOP_K,
@@ -139,25 +144,45 @@ def run_baseline(question: str, retriever: ChromaHybridRag, rag: OpenaiRAG) -> d
         "queries": [question],
         "retrieved_ids": [doc["id"] for doc in documents],
         "contexts": [str(doc["content"]) for doc in documents if doc.get("content") is not None],
-        "answer": str(rag.answer(question, documents)),
-    }
+    }, documents
 
 
 def collect_outputs(domain: str, questions: list[dict[str, Any]], retriever: ChromaHybridRag,
-                    rag: OpenaiRAG, rerun: bool, expansion: str, baseline: bool) -> list[dict[str, Any]]:
+                    rag: OpenaiRAG, rerun: bool, expansion: str, baseline: bool,
+                    workers: int) -> list[dict[str, Any]]:
     cache_file = RESULTS_DIR / f"{domain}_outputs.json"
     cache = {}
     if cache_file.exists() and not rerun:
         cache = {row["id"]: row for row in json.loads(cache_file.read_text(encoding="utf-8"))}
 
-    rows = []
-    for i, q in enumerate(questions, start=1):
-        if q["id"] not in cache:
-            print(f"[{domain}] {i}/{len(questions)} {q['question'][:80]}")
-            if baseline:
-                out = run_baseline(q["question"], retriever, rag)
-            else:
-                out = run_pipeline(q["question"], retriever, rag, expansion)
+    def save() -> None:
+        # Saved after every answer so an interrupted run can resume.
+        cache_file.write_text(json.dumps(list(cache.values()), indent=2, ensure_ascii=False),
+                              encoding="utf-8")
+
+    todo = [q for q in questions if q["id"] not in cache]
+
+    # Retrieval runs sequentially: it is fast, and the KeyBERT / spaCy models
+    # in query_gen are not safe to share across threads.
+    retrieved = []
+    for i, q in enumerate(todo, start=1):
+        print(f"[{domain}] retrieve {i}/{len(todo)} {q['question'][:80]}")
+        if baseline:
+            out, documents = run_baseline(q["question"], retriever)
+        else:
+            out, documents = run_pipeline(q["question"], retriever, expansion)
+        retrieved.append((q, out, documents))
+
+    # Answer generation is I/O-bound, so the LLM calls run in parallel.
+    def answer(item):
+        q, out, documents = item
+        return q, out, str(rag.answer(q["question"], documents))
+
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = [pool.submit(answer, item) for item in retrieved]
+        for done, future in enumerate(as_completed(futures), start=1):
+            q, out, text = future.result()
             prefix = f"{q['source_doc_id']}_chunk_"
             gold_chunks = sum(1 for cid in out["retrieved_ids"] if cid.startswith(prefix))
             cache[q["id"]] = {
@@ -166,15 +191,14 @@ def collect_outputs(domain: str, questions: list[dict[str, Any]], retriever: Chr
                 "ground_truth": q["ground_truth"],
                 "source_doc_id": q["source_doc_id"],
                 **out,
+                "answer": text,
                 "gold_doc_hit": gold_chunks > 0,
                 "gold_chunk_share": gold_chunks / len(out["retrieved_ids"]) if out["retrieved_ids"] else 0.0,
             }
-            # Save after every question so an interrupted run can resume.
-            RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-            cache_file.write_text(json.dumps(list(cache.values()), indent=2, ensure_ascii=False),
-                                  encoding="utf-8")
-        rows.append(cache[q["id"]])
-    return rows
+            print(f"[{domain}] answered {done}/{len(retrieved)}")
+            save()
+
+    return [cache[q["id"]] for q in questions]
 
 
 def make_metrics() -> list:
@@ -216,13 +240,21 @@ def ragas_score(domain: str, rows: list[dict[str, Any]], judge_model: str, worke
 
     llm = LangchainLLMWrapper(ChatOpenAI(model=judge_model, temperature=0))
     embeddings = LangchainEmbeddingsWrapper(OpenAIEmbeddings(model="text-embedding-3-small"))
+
+    # Metrics missing on the same rows are scored together in one evaluate()
+    # call, so their judge calls share the worker pool instead of running
+    # one metric after another. On a fresh run that is a single call.
+    groups: dict[tuple[int, ...], list] = {}
     for metric in metrics:
         if metric.name not in df:
             df[metric.name] = float("nan")
-        todo = [i for i in range(len(rows)) if pd.isna(df.at[i, metric.name])]
-        if not todo:
-            continue
-        print(f"[{domain}] {metric.name}: scoring {len(todo)} rows")
+        todo = tuple(i for i in range(len(rows)) if pd.isna(df.at[i, metric.name]))
+        if todo:
+            groups.setdefault(todo, []).append(metric)
+
+    for todo, group in groups.items():
+        todo = list(todo)
+        print(f"[{domain}] {', '.join(m.name for m in group)}: scoring {len(todo)} rows")
         dataset = EvaluationDataset.from_list([
             {
                 "user_input": rows[i]["question"],
@@ -234,12 +266,13 @@ def ragas_score(domain: str, rows: list[dict[str, Any]], judge_model: str, worke
         ])
         result = evaluate(
             dataset=dataset,
-            metrics=[metric],
+            metrics=group,
             llm=llm,
             embeddings=embeddings,
             run_config=RunConfig(max_workers=workers, timeout=300),
-        )
-        df.loc[todo, metric.name] = result.to_pandas()[metric.name].to_numpy()
+        ).to_pandas()
+        for metric in group:
+            df.loc[todo, metric.name] = result[metric.name].to_numpy()
         df.to_csv(scores_file, index=False, encoding="utf-8")
 
     df["gold_doc_hit"] = [row["gold_doc_hit"] for row in rows]
@@ -275,7 +308,8 @@ def write_report(summaries: list[dict[str, Any]], judge_model: str, pipeline: st
     (RESULTS_DIR / "summary.json").write_text(json.dumps(summaries, indent=2), encoding="utf-8")
     labels = list(METRIC_COLUMNS.values())
     lines = [
-        f"# Ragas benchmark results (judge: {judge_model}, top_k={TOP_K}, chunk={CHUNK_SIZE}/{CHUNK_OVERLAP}, "
+        f"# Ragas benchmark results (judge: {judge_model}, top_k={TOP_K}, max_context={MAX_CONTEXT_CHUNKS}, "
+        f"chunk={CHUNK_SIZE}/{CHUNK_OVERLAP}, "
         f"{pipeline})",
         "",
         "| domain | n | " + " | ".join(labels) + " |",
@@ -294,7 +328,9 @@ def main() -> None:
     parser.add_argument("--domains", nargs="+", choices=DOMAINS, default=list(DOMAINS))
     parser.add_argument("--limit", type=int, default=None, help="only the first N questions per domain")
     parser.add_argument("--judge-model", default="gpt-4.1-mini", help="LLM used by the Ragas metrics")
-    parser.add_argument("--workers", type=int, default=8, help="parallel Ragas judge calls")
+    parser.add_argument("--workers", type=int, default=16,
+                        help="parallel LLM calls (answer generation and Ragas judging); "
+                             "lower it if you hit OpenAI rate limits")
     parser.add_argument("--rebuild-index", action="store_true", help="re-chunk the benchmark corpora")
     parser.add_argument("--rerun-pipeline", action="store_true", help="ignore cached pipeline outputs (implies --rescore)")
     parser.add_argument("--rescore", action="store_true", help="ignore saved Ragas scores")
@@ -328,7 +364,7 @@ def main() -> None:
         questions = questions[: args.limit] if args.limit else questions
         retriever = build_index(domain, corpus, args.rebuild_index)
         rows = collect_outputs(domain, questions, retriever, rag, args.rerun_pipeline,
-                               args.expansion, args.baseline)
+                               args.expansion, args.baseline, args.workers)
         print(f"[{domain}] scoring {len(rows)} answers with Ragas ...")
         df = ragas_score(domain, rows, args.judge_model, args.workers,
                          rescore=args.rerun_pipeline or args.rescore)

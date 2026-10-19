@@ -96,6 +96,7 @@ class ChromaHybridRag:
         # In-memory storage for BM25 sparse index
         self.corpus_chunks = []
         self.chunk_ids = []
+        self._bm25 = None  # built lazily, dropped whenever the corpus changes
         self._load_bm25_corpus()
 
     def _load_bm25_corpus(self):
@@ -146,6 +147,7 @@ class ChromaHybridRag:
         # 2. Update local BM25 corpus tracker
         self.corpus_chunks.extend(text_chunks)
         self.chunk_ids.extend(ids)
+        self._bm25 = None
 
         print(f"Successfully processed '{source_name}' -> Assigned UUID: {document_id} ({len(text_chunks)} chunks).")
         return document_id
@@ -179,9 +181,11 @@ class ChromaHybridRag:
         return self._process_and_insert(text_data, document_id, source_name, chunk_size, overlap)
 
     def _get_bm25_retriever(self):
-        """Builds BM25 index on the current corpus chunks."""
-        tokenized_corpus = [doc.lower().split() for doc in self.corpus_chunks]
-        return BM25Okapi(tokenized_corpus)
+        """Returns the BM25 index, building it only when the corpus has changed."""
+        if self._bm25 is None:
+            tokenized_corpus = [doc.lower().split() for doc in self.corpus_chunks]
+            self._bm25 = BM25Okapi(tokenized_corpus)
+        return self._bm25
 
     def retrieve(self, query, top_k=3, dense_weight=0.6, sparse_weight=0.4, rrf_k=60):
         """Performs hybrid retrieval (Dense Chroma + Sparse BM25) for a single query using RRF."""

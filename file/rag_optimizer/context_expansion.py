@@ -25,12 +25,14 @@ EXPANSION_MODES = ("none", "centroid", "neighbor", "both")
 
 
 class ContextExpander:
-    def __init__(self, retriever, centroid_seeds=3, centroid_k=3, neighbor_seeds=5, window=1):
+    def __init__(self, retriever, centroid_seeds=3, centroid_k=3, neighbor_seeds=5, window=1,
+                 max_chunks=None):
         self.collection = retriever.collection
         self.centroid_seeds = centroid_seeds  # first-pass chunks averaged into the centroid
         self.centroid_k = centroid_k          # new chunks the centroid search may add
         self.neighbor_seeds = neighbor_seeds  # chunks whose neighbors get fetched
         self.window = window                  # neighbors on each side of a seed
+        self.max_chunks = max_chunks          # cap on the returned context (None = no cap)
 
     @staticmethod
     def rank_seeds(docs: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -124,12 +126,17 @@ class ContextExpander:
         Neighbors are placed directly around the chunk they belong to (in
         document order) so the LLM reads contiguous text; centroid chunks
         follow the first-pass results.
+
+        With max_chunks set, only the top max_chunks are kept, by priority:
+        seeds in rank order, each together with its neighbors, and the
+        centroid chunks right after the seeds they were averaged from.
+        The kept chunks stay in the reading order described above.
         """
         if mode not in EXPANSION_MODES:
             raise ValueError(f"mode must be one of {EXPANSION_MODES}, got {mode!r}")
         seeds = [{**d, "expansion": "seed"} for d in self.rank_seeds(docs)]
         if mode == "none" or not seeds:
-            return seeds
+            return seeds[: self.max_chunks]
 
         known = {d["id"] for d in seeds}
         centroid_docs = []
@@ -146,12 +153,18 @@ class ContextExpander:
             meta = self.collection.get(ids=list(neighbors), include=["metadatas"])
             seed_index = {i: int(m["chunk_index"]) for i, m in zip(meta["ids"], meta["metadatas"])}
 
-        combined = []
+        groups = []  # one group per seed: its neighbors around it, in document order
         for seed in seeds:
             around = neighbors.get(seed["id"], [])
             idx = seed_index.get(seed["id"], 0)
-            combined.extend(n for n in around if n["chunk_index"] < idx)
-            combined.append(seed)
-            combined.extend(n for n in around if n["chunk_index"] > idx)
-        combined.extend(centroid_docs)
-        return combined
+            groups.append([n for n in around if n["chunk_index"] < idx] + [seed]
+                          + [n for n in around if n["chunk_index"] > idx])
+
+        if self.max_chunks is not None:
+            priority = [d for g in groups[: self.centroid_seeds] for d in g] + centroid_docs \
+                + [d for g in groups[self.centroid_seeds:] for d in g]
+            keep = {d["id"] for d in priority[: self.max_chunks]}
+            groups = [[d for d in g if d["id"] in keep] for g in groups]
+            centroid_docs = [d for d in centroid_docs if d["id"] in keep]
+
+        return [d for g in groups for d in g] + centroid_docs
